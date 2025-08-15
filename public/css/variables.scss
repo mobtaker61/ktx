@@ -1,0 +1,28 @@
+// Custom Color Variables
+$primary: #0072b3;
+$primary-dark: #005a8f;
+$primary-light: #3399cc;
+$primary-lighter: #cce7f3;
+
+$secondary: #15ACE1;
+$light: #F4F7FE;
+$dark: #14183E;
+
+// Bootstrap Override Variables
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "light": $light,
+  "dark": $dark
+);
+
+// Custom CSS Variables
+:root {
+  --primary: #{$primary};
+  --primary-dark: #{$primary-dark};
+  --primary-light: #{$primary-light};
+  --primary-lighter: #{$primary-lighter};
+  --secondary: #{$secondary};
+  --light: #{$light};
+  --dark: #{$dark};
+}

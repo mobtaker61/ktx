@@ -1,0 +1,148 @@
+/* Custom Bootstrap Colors Override */
+:root {
+    --bs-primary: #0072b3 !important;
+    --bs-primary-rgb: 0, 114, 179 !important;
+}
+
+/* Override Bootstrap Primary Color */
+.btn-primary {
+    background-color: #0072b3 !important;
+    border-color: #0072b3 !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #005a8f !important;
+    border-color: #005a8f !important;
+}
+
+.btn-outline-primary {
+    color: #0072b3 !important;
+    border-color: #0072b3 !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+    background-color: #0072b3 !important;
+    border-color: #0072b3 !important;
+}
+
+.text-primary {
+    color: #0072b3 !important;
+}
+
+.bg-primary {
+    background-color: #0072b3 !important;
+}
+
+.border-primary {
+    border-color: #0072b3 !important;
+}
+
+/* Form Controls */
+.form-control:focus {
+    border-color: #0072b3 !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 114, 179, 0.25) !important;
+}
+
+.form-select:focus {
+    border-color: #0072b3 !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 114, 179, 0.25) !important;
+}
+
+/* Links */
+a {
+    color: #0072b3;
+}
+
+a:hover {
+    color: #005a8f;
+}
+
+
+/* Pagination */
+.page-link {
+    color: #0072b3;
+}
+
+.page-link:hover {
+    color: #005a8f;
+}
+
+.page-item.active .page-link {
+    background-color: #0072b3;
+    border-color: #0072b3;
+}
+
+/* Progress Bars */
+.progress-bar {
+    background-color: #0072b3;
+}
+
+/* Alerts */
+.alert-primary {
+    color: #004d7a;
+    background-color: #cce7f3;
+    border-color: #99cfe7;
+}
+
+/* Badges */
+.badge.bg-primary {
+    background-color: #0072b3 !important;
+}
+
+/* List Group */
+.list-group-item.active {
+    background-color: #0072b3;
+    border-color: #0072b3;
+}
+
+/* Cards */
+.card-header-primary {
+    background-color: #0072b3;
+    color: white;
+}
+
+/* Custom Components */
+.hero-header {
+    background-color: #0072b3 !important;
+}
+
+.newsletter {
+    background-color: #0072b3 !important;
+}
+
+.feature {
+    background-color: #0072b3 !important;
+}
+
+/* Service Items */
+.service-item:hover .service-icon {
+    background-color: #0072b3 !important;
+}
+
+.service-item:hover h5,
+.service-item:hover a {
+    color: #0072b3 !important;
+}
+
+/* Footer */
+.footer .btn.btn-social:hover {
+    background-color: #0072b3 !important;
+}
+
+.footer .btn.btn-link:hover {
+    color: #0072b3 !important;
+}
+
+/* Testimonials */
+.testimonial-carousel .owl-nav .owl-prev:hover,
+.testimonial-carousel .owl-nav .owl-next:hover {
+    background-color: #0072b3 !important;
+}
+
+.testimonial-carousel .owl-dot.active {
+    background-color: #0072b3 !important;
+}
