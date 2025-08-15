@@ -21,6 +21,8 @@ return new class extends Migration
             $table->date('completion_date')->nullable();
             $table->string('image')->nullable();
             $table->json('gallery')->nullable();
+            $table->boolean('featured')->default(false);
+            $table->integer('order')->default(0);
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });

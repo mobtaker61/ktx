@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
+            $table->string('icon')->nullable();
             $table->string('image')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
