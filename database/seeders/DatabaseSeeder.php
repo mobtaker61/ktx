@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             ServiceSeeder::class,
             TeamSeeder::class,
-            PortfolioCategorySeeder::class,
-            PortfolioSeeder::class,
+            PortfolioCategorySeeder::class, // ابتدا دسته‌های portfolio
+            PortfolioSeeder::class,         // سپس portfolio ها
             SettingSeeder::class,
             CountrySeeder::class,
             CareerOpportunitySeeder::class,

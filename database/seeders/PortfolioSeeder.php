@@ -131,7 +131,7 @@ class PortfolioSeeder extends Seeder
                 'image' => 'portfolios/installation-1.jpg',
                 'status' => 'active',
                 'featured' => false,
-                'order' => 9
+                'order' => 7
             ],
             [
                 'title' => 'Service Contract - Textile Industry',
@@ -144,7 +144,7 @@ class PortfolioSeeder extends Seeder
                 'image' => 'portfolios/service-1.jpg',
                 'status' => 'active',
                 'featured' => false,
-                'order' => 10
+                'order' => 6
             ],
             [
                 'title' => 'Consulting - Energy Efficiency Project',
@@ -157,7 +157,7 @@ class PortfolioSeeder extends Seeder
                 'image' => 'portfolios/consulting-1.jpg',
                 'status' => 'active',
                 'featured' => false,
-                'order' => 11
+                'order' => 5
             ],
             [
                 'title' => 'Training Program - Compressor Operations',
@@ -170,7 +170,7 @@ class PortfolioSeeder extends Seeder
                 'image' => 'portfolios/training-1.jpg',
                 'status' => 'active',
                 'featured' => false,
-                'order' => 12
+                'order' => 4
             ]
         ];
 
