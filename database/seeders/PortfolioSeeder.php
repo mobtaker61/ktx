@@ -127,11 +127,11 @@ class PortfolioSeeder extends Seeder
                 'client' => 'Fars Cement Company',
                 'location' => 'Fars, Iran',
                 'completion_date' => '2023-03-10',
-                'category_id' => 9, // Installation
+                'category_id' => 7, // Installation
                 'image' => 'portfolios/installation-1.jpg',
                 'status' => 'active',
                 'featured' => false,
-                'order' => 7
+                'order' => 9
             ],
             [
                 'title' => 'Service Contract - Textile Industry',
@@ -140,11 +140,11 @@ class PortfolioSeeder extends Seeder
                 'client' => 'Yazd Textile Industries',
                 'location' => 'Yazd, Iran',
                 'completion_date' => '2023-02-28',
-                'category_id' => 10, // Service
+                'category_id' => 6, // Service
                 'image' => 'portfolios/service-1.jpg',
                 'status' => 'active',
                 'featured' => false,
-                'order' => 6
+                'order' => 10
             ],
             [
                 'title' => 'Consulting - Energy Efficiency Project',
@@ -153,11 +153,11 @@ class PortfolioSeeder extends Seeder
                 'client' => 'Iran Energy Efficiency Organization',
                 'location' => 'Tehran, Iran',
                 'completion_date' => '2023-01-15',
-                'category_id' => 11, // Consulting
+                'category_id' => 5, // Consulting
                 'image' => 'portfolios/consulting-1.jpg',
                 'status' => 'active',
                 'featured' => false,
-                'order' => 5
+                'order' => 11
             ],
             [
                 'title' => 'Training Program - Compressor Operations',
@@ -166,11 +166,11 @@ class PortfolioSeeder extends Seeder
                 'client' => 'National Iranian Oil Company',
                 'location' => 'Tehran, Iran',
                 'completion_date' => '2022-12-20',
-                'category_id' => 12, // Training
+                'category_id' => 4, // Training
                 'image' => 'portfolios/training-1.jpg',
                 'status' => 'active',
                 'featured' => false,
-                'order' => 4
+                'order' => 12
             ]
         ];
 
