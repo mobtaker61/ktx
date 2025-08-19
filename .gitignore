@@ -22,3 +22,5 @@ composer.lock
 package-lock.json
 vite.lock
 vite.config.js
+.cursor/*
+*.lock
