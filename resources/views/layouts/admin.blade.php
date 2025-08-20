@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'Admin Dashboard - KTX')</title>
 
+    <!-- Google Tag Manager -->
+    <x-google-tag-manager />
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -321,6 +324,9 @@
             </ul>
         </div>
     </div>
+
+    <!-- Google Tag Manager (noscript) -->
+    <x-google-tag-manager-noscript />
 
     <!-- Main Content -->
     <div class="main-content">

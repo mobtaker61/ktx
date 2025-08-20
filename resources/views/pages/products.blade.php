@@ -11,6 +11,9 @@
 @section('hero_image', asset('img/base/ktx_engine.png'))
 
 @section('content')
+<!-- GTM Product List Tracking -->
+<x-gtm-tracking event="product_list_view" :data="['category' => request()->get('category', 'all'), 'products_count' => $products->count()]" />
+
 <!-- Categories Filter -->
 <div class="container-fluid py-5">
     <div class="container">

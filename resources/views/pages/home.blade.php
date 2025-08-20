@@ -34,10 +34,10 @@
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                 <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">About Us</div>
                 <h3 class="mb-4">Engineering Precision, Driving Global Markets</h3>
-                <p class="mb-4">At KTX Nova Compressor Group, we unite Japanese innovation from Kobel Steel, advanced manufacturing by Wuxi Xiya, and the global market leadership of TCI Petrochemical Group to deliver high-performance industrial compressor solutions to the world.</p>
+                <p class="mb-4">KTX Nova Compressor Group, headquartered in Dubai, is a global alliance delivering advanced industrial compressor solutions. Combining Japanese innovation from Kobel Steel, precision manufacturing by Wuxi Xiya, and international market expertise from TCI Petrochemical Group, we provide reliable, efficient, and high-performance compressors for industries worldwide — backed by expert consulting and dedicated after-sales service.</p>
             </div>
             <div class="col-lg-12 d-none">
-                <p class="mb-4">With over 20 years of experience in the industrial compressor industry, we have developed advanced technologies that ensure optimal performance, energy efficiency, and reliability for our clients.</p>
+                <p class="mb-4">With over 70 years of experience in the industrial compressor industry, we have developed advanced technologies that ensure optimal performance, energy efficiency, and reliability for our clients.</p>
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Advanced Technology</h6>
@@ -134,7 +134,7 @@
         <div class="row g-5">
             <div class="col-lg-6 align-self-center mb-md-5 pb-md-5 wow fadeIn" data-wow-delay="0.3s">
                 <div class="btn btn-sm border rounded-pill text-white px-3 mb-3">Why Choose Us</div>
-                <h1 class="text-white mb-4">We're Best in Industrial Compressor Industry with 20 Years of Experience</h1>
+                <h1 class="text-white mb-4">We're Best in Industrial Compressor Industry with 70 Years of Experience</h1>
                 <p class="text-light mb-4">KTX has been at the forefront of industrial compressor technology, providing innovative solutions that meet the highest standards of quality and efficiency.</p>
                 <div class="d-flex align-items-center text-white mb-3">
                     <div class="btn-sm-square bg-white text-primary rounded-circle me-3">
@@ -157,10 +157,10 @@
                 <div class="row g-4 pt-3">
                     <div class="col-sm-6">
                         <div class="d-flex rounded p-3" style="background: rgba(256, 256, 256, 0.1);">
-                            <i class="fa fa-users fa-3x text-white"></i>
+                            <i class="fa fa-industry fa-3x text-white"></i>
                             <div class="ms-3">
-                                <h2 class="text-white mb-0" data-toggle="counter-up">500</h2>
-                                <p class="text-white mb-0">Happy Clients</p>
+                                <h2 class="text-white mb-0" ><span data-toggle="counter-up">100</span> +</h2>
+                                <p class="text-white mb-0">Product Varieties</p>
                             </div>
                         </div>
                     </div>

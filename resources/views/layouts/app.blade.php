@@ -8,6 +8,9 @@
 
     <title>@yield('title', 'KTX.Tech')</title>
 
+    <!-- Google Tag Manager -->
+    <x-google-tag-manager />
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -29,6 +32,9 @@
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <x-google-tag-manager-noscript />
+
     @include('components.navbar')
 
     <!-- Hero Section - Only show if not on home page -->
@@ -111,6 +117,9 @@
     <!-- Custom JS -->
     <script src="{{ asset('js/main.js') }}"></script>
     @stack('scripts')
+
+    <!-- GTM Page View Tracking -->
+    <x-gtm-tracking />
 
     <script>
         // Hero section column width management

@@ -1,19 +1,23 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\AboutController;
-use App\Http\Controllers\Frontend\ProductController;
+use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PortfolioController;
+use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\ServiceController;
 use App\Http\Controllers\Frontend\TeamController;
-use App\Http\Controllers\Frontend\ContactController;
-use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobApplicationController;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\SitemapController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 // Frontend Routes (No Authentication Required)
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Sitemap Route
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 
@@ -63,9 +67,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::resource('team', App\Http\Controllers\Admin\TeamController::class);
     Route::resource('contacts', App\Http\Controllers\Admin\ContactController::class);
     Route::resource('settings', App\Http\Controllers\Admin\SettingController::class);
-            Route::resource('career-opportunities', App\Http\Controllers\Admin\CareerOpportunityController::class);
-        Route::resource('job-applications', App\Http\Controllers\Admin\JobApplicationController::class);
-        Route::resource('certificates', App\Http\Controllers\Admin\CertificateController::class);
+    Route::resource('career-opportunities', App\Http\Controllers\Admin\CareerOpportunityController::class);
+    Route::resource('job-applications', App\Http\Controllers\Admin\JobApplicationController::class);
+    Route::resource('certificates', App\Http\Controllers\Admin\CertificateController::class);
 
     // Career Opportunities additional routes
     Route::patch('/career-opportunities/{careerOpportunity}/toggle-status', [App\Http\Controllers\Admin\CareerOpportunityController::class, 'toggleStatus'])->name('career-opportunities.toggleStatus');
@@ -97,6 +101,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
 
     Route::post('/logout', function () {
         Auth::logout();
+
         return redirect('/');
     })->name('logout');
 });
