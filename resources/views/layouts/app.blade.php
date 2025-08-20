@@ -121,6 +121,9 @@
     <!-- GTM Page View Tracking -->
     <x-gtm-tracking />
 
+    <!-- reCAPTCHA Script -->
+    <x-recaptcha-script />
+
     <script>
         // Hero section column width management
         document.addEventListener('DOMContentLoaded', function() {

@@ -29,7 +29,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/GtmHelper.php"
+            "app/Helpers/GtmHelper.php",
+            "app/Helpers/RecaptchaHelper.php"
         ]
     },
     "autoload-dev": {

@@ -152,6 +152,11 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
+                                    <!-- reCAPTCHA Widget -->
+                                    <div class="mb-3">
+                                        <x-recaptcha-widget />
+                                    </div>
+
                                     <button class="btn btn-primary w-100 py-3" type="submit">
                                         <i class="fas fa-paper-plane me-2"></i>Send Message
                                     </button>
