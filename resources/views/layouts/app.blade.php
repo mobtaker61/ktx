@@ -8,8 +8,44 @@
 
     <title>@yield('title', 'KTX.Tech')</title>
 
+    <!-- AI Optimization Meta Tags -->
+    <meta name="description" content="@yield('meta_description', 'KTX - Leading Industrial Compressor Solutions. Expert engineering, reliable products, and comprehensive support for your industrial needs.')">
+    <meta name="keywords" content="@yield('meta_keywords', 'industrial compressor, air compressor, screw compressor, compressor parts, compressor service, KTX, industrial equipment')">
+    <meta name="author" content="KTX Compressor">
+    <meta name="language" content="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+    <!-- AI-Friendly Meta Tags -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+    <!-- Open Graph for Social Media AI -->
+    <meta property="og:title" content="@yield('og_title', 'KTX - Industrial Compressor Solutions')">
+    <meta property="og:description" content="@yield('og_description', 'Leading provider of industrial compressors, parts, and services. Expert engineering and reliable solutions.')">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request()->url() }}">
+    <meta property="og:image" content="@yield('og_image', asset('img/base/ktx_logo.png'))">
+    <meta property="og:site_name" content="KTX Compressor">
+    <meta property="og:locale" content="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+    <!-- Twitter Card for AI Crawlers -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('twitter_title', 'KTX - Industrial Compressor Solutions')">
+    <meta name="twitter:description" content="@yield('twitter_description', 'Leading provider of industrial compressors, parts, and services. Expert engineering and reliable solutions.')">
+    <meta name="twitter:image" content="@yield('twitter_image', asset('img/base/ktx_logo.png'))">
+
+    <!-- AI-Specific Meta Tags -->
+    <meta name="ai-crawler-friendly" content="true">
+    <meta name="content-type" content="industrial-compressor-solutions">
+    <meta name="business-category" content="industrial-equipment">
+    <meta name="service-area" content="worldwide">
+    <meta name="expertise" content="compressor-engineering, industrial-solutions, technical-support">
+    <meta name="content-language" content="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <meta name="content-region" content="Middle East, Worldwide">
+    <meta name="content-industry" content="Industrial Manufacturing, Compressor Technology">
+
     <!-- Google Tag Manager -->
-    <x-google-tag-manager />
+    {{-- <x-google-tag-manager /> --}}
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,11 +65,12 @@
     <!-- Bootstrap Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap-custom.css') }}">
     @stack('styles')
+
 </head>
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <x-google-tag-manager-noscript />
+    {{-- <x-google-tag-manager-noscript /> --}}
 
     @include('components.navbar')
 
@@ -46,7 +83,8 @@
             <div class="container-fluid pt-5 bg-primary hero-header">
                 <div class="container pt-5">
                     <div class="row g-5 pt-5">
-                        <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5" id="hero-title-column">
+                        <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5"
+                            id="hero-title-column">
                             <h1 class="display-4 text-white mb-4 animated slideInRight">@yield('hero_title', 'Welcome to KTX')</h1>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb justify-content-center justify-content-lg-start mb-0">

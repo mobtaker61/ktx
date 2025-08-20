@@ -48,3 +48,49 @@ Crawl-delay: 1
 User-agent: Slurp
 Allow: /
 Crawl-delay: 1
+
+# AI Crawlers - OpenAI
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 1
+
+# AI Crawlers - Google
+User-agent: Google-Extended
+Allow: /
+Crawl-delay: 1
+
+# AI Crawlers - Anthropic
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 1
+
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 1
+
+# AI Crawlers - Common Crawl
+User-agent: CCBot
+Allow: /
+Crawl-delay: 1
+
+# AI Crawlers - Other
+User-agent: Omgilibot
+Allow: /
+Crawl-delay: 1
+
+User-agent: FacebookBot
+Allow: /
+Crawl-delay: 1
+
+# AI Training Data
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: YouBot
+Allow: /
+Crawl-delay: 1

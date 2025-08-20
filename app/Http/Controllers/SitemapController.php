@@ -240,6 +240,9 @@ class SitemapController extends Controller
 </urlset>';
 
         return response($content, 200)
-            ->header('Content-Type', 'application/xml');
+            ->header('Content-Type', 'application/xml')
+            ->header('X-Robots-Tag', 'index, follow')
+            ->header('X-AI-Crawl-Friendly', 'true')
+            ->header('X-Content-Industry', 'industrial-manufacturing');
     }
 }
