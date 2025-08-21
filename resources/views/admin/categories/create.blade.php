@@ -7,7 +7,7 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <form action="{{ route('admin.categories.store') }}" method="POST">
+        <form action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="row">
@@ -42,6 +42,27 @@
                 </div>
 
                 <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Category Image</label>
+                        <div class="image-upload-container">
+                            <input type="file" class="form-control @error('image') is-invalid @enderror"
+                                   id="image" name="image" accept="image/*" onchange="previewImage(this)">
+                            @error('image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Image Preview -->
+                        <div id="image-preview" class="mt-2" style="display: none;">
+                            <img id="preview-img" src="" alt="Preview" class="img-thumbnail" style="max-width: 200px; max-height: 200px;">
+                            <button type="button" class="btn btn-sm btn-outline-danger mt-1" onclick="removeImage()">
+                                <i class="fas fa-times me-1"></i>Remove Image
+                            </button>
+                        </div>
+
+                        <small class="text-muted">Upload a square image (recommended: 400x400px). Supported formats: JPG, PNG, GIF, WebP. Max size: 2MB.</small>
+                    </div>
+
                     <div class="mb-3">
                         <label for="parent_id" class="form-label">Parent Category</label>
                         <select class="form-select @error('parent_id') is-invalid @enderror"
@@ -93,6 +114,32 @@
     </div>
 </div>
 
+@push('styles')
+<style>
+.image-upload-container {
+    position: relative;
+}
+
+#image-preview {
+    text-align: center;
+    padding: 10px;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+#preview-img {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.btn-outline-danger:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+</style>
+@endpush
+
 @push('scripts')
 <script>
     // Auto-generate slug from name
@@ -105,6 +152,30 @@
             .trim('-');
         document.getElementById('slug').value = slug;
     });
+
+    // Image preview functionality
+    function previewImage(input) {
+        const preview = document.getElementById('image-preview');
+        const previewImg = document.getElementById('preview-img');
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                preview.style.display = 'block';
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.style.display = 'none';
+        }
+    }
+
+    function removeImage() {
+        document.getElementById('image').value = '';
+        document.getElementById('image-preview').style.display = 'none';
+    }
 </script>
 @endpush
 @endsection

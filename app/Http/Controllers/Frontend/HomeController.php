@@ -3,12 +3,25 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\News;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('pages.home');
+        $categories = Category::active()
+            ->parentOnly()
+            ->withProductCount()
+            ->orderBy('order')
+            ->take(6)
+            ->get();
+
+        $latestNews = News::published()
+            ->orderBy('published_at', 'desc')
+            ->take(3)
+            ->get();
+
+        return view('pages.home', compact('categories', 'latestNews'));
     }
-} 
+}

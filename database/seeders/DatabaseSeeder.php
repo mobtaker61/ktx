@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             CareerOpportunitySeeder::class,
             CertificateSeeder::class,
+            NewsSeeder::class,
         ]);
     }
 }

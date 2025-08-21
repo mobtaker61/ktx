@@ -7,7 +7,7 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <form action="{{ route('admin.categories.update', $category) }}" method="POST">
+        <form action="{{ route('admin.categories.update', $category) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -43,6 +43,46 @@
                 </div>
 
                 <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Category Image</label>
+                        <div class="image-upload-container">
+                            <input type="file" class="form-control @error('image') is-invalid @enderror"
+                                   id="image" name="image" accept="image/*" onchange="previewImage(this)">
+                            @error('image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Current Image Display -->
+                        @if($category->image)
+                        <div class="current-image mt-2">
+                            <label class="form-label">Current Image:</label>
+                            <div class="current-image-container">
+                                <img src="{{ asset('storage/'.$category->image) }}"
+                                     alt="{{ $category->name }}"
+                                     class="img-thumbnail current-img"
+                                     style="max-width: 200px; max-height: 200px;">
+                                <div class="current-image-overlay">
+                                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeCurrentImage()">
+                                        <i class="fas fa-trash me-1"></i>Remove
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+
+                        <!-- New Image Preview -->
+                        <div id="image-preview" class="mt-2" style="display: none;">
+                            <label class="form-label">New Image Preview:</label>
+                            <img id="preview-img" src="" alt="Preview" class="img-thumbnail" style="max-width: 200px; max-height: 200px;">
+                            <button type="button" class="btn btn-sm btn-outline-danger mt-1" onclick="removeNewImage()">
+                                <i class="fas fa-times me-1"></i>Remove New Image
+                            </button>
+                        </div>
+
+                        <small class="text-muted">Upload a square image (recommended: 400x400px). Supported formats: JPG, PNG, GIF, WebP. Max size: 2MB.</small>
+                    </div>
+
                     <div class="mb-3">
                         <label for="parent_id" class="form-label">Parent Category</label>
                         <select class="form-select @error('parent_id') is-invalid @enderror"
@@ -97,6 +137,61 @@
     </div>
 </div>
 
+@push('styles')
+<style>
+.image-upload-container {
+    position: relative;
+}
+
+.current-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.current-img {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.current-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 8px;
+}
+
+.current-image-container:hover .current-image-overlay {
+    opacity: 1;
+}
+
+#image-preview {
+    text-align: center;
+    padding: 10px;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+#preview-img {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.btn-outline-danger:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+</style>
+@endpush
+
 @push('scripts')
 <script>
     // Auto-generate slug from name
@@ -109,6 +204,42 @@
             .trim('-');
         document.getElementById('slug').value = slug;
     });
+
+    // Image preview functionality
+    function previewImage(input) {
+        const preview = document.getElementById('image-preview');
+        const previewImg = document.getElementById('preview-img');
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                preview.style.display = 'block';
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.style.display = 'none';
+        }
+    }
+
+    function removeNewImage() {
+        document.getElementById('image').value = '';
+        document.getElementById('image-preview').style.display = 'none';
+    }
+
+    function removeCurrentImage() {
+        // Add a hidden input to mark current image for removal
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'remove_current_image';
+        hiddenInput.value = '1';
+        document.querySelector('form').appendChild(hiddenInput);
+
+        // Hide the current image display
+        document.querySelector('.current-image').style.display = 'none';
+    }
 </script>
 @endpush
 @endsection

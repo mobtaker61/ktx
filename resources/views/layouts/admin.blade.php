@@ -276,6 +276,9 @@
                         <i class="fas fa-chevron-down submenu-arrow"></i>
                     </a>
                     <ul class="submenu-items">
+                        <li><a href="{{ route('admin.news.index') }}" class="{{ request()->routeIs('admin.news.*') ? 'active' : '' }}">
+                            <i class="fas fa-newspaper"></i> News
+                        </a></li>
                         <li><a href="{{ route('admin.team.index') }}" class="{{ request()->routeIs('admin.team.*') ? 'active' : '' }}">
                             <i class="fas fa-users"></i> Team Members
                         </a></li>

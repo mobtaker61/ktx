@@ -147,7 +147,30 @@
     </div>
 
     <div class="col-md-4">
+        <!-- Category Image Card -->
         <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Category Image</h5>
+            </div>
+            <div class="card-body text-center">
+                @if($category->image)
+                    <img src="{{ asset('storage/'.$category->image) }}" 
+                         alt="{{ $category->name }}" 
+                         class="category-show-image"
+                         style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <div class="mt-3">
+                        <small class="text-muted">Image stored at: {{ $category->image }}</small>
+                    </div>
+                @else
+                    <div class="category-no-image">
+                        <i class="fas fa-image fa-4x text-muted mb-3"></i>
+                        <p class="text-muted mb-0">No image uploaded</p>
+                    </div>
+                @endif
+            </div>
+        </div>
+
+        <div class="card mt-3">
             <div class="card-header">
                 <h5 class="card-title mb-0">Quick Actions</h5>
             </div>
@@ -196,4 +219,27 @@
         </div>
     </div>
 </div>
+
+@push('styles')
+<style>
+.category-show-image {
+    transition: transform 0.3s ease;
+}
+
+.category-show-image:hover {
+    transform: scale(1.05);
+}
+
+.category-no-image {
+    padding: 2rem 1rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 2px dashed #dee2e6;
+}
+
+.category-no-image i {
+    opacity: 0.5;
+}
+</style>
+@endpush
 @endsection

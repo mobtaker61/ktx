@@ -326,7 +326,108 @@
         </div>
     </div>
     <!-- Xiya Compressor Company Section End -->
+
+    <!-- Nostalgia Start -->
+    <div class="container-fluid bg-primary py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-12 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="text-center">
+                        <div class="btn btn-sm border rounded-pill text-white px-3 mb-3">Nostalgia</div>
+                        <h1 class="text-white mb-5">Our Legacy in Industrial Compressors</h1>
+                    </div>
+                </div>
+            </div>
+
+                            <!-- 3D Carousel Container -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 wow fadeIn" data-wow-delay="0.3s">
+                        <div class="nostalgia-slider-container">
+                            <section id="nostalgia-slider">
+                                <input type="radio" name="nostalgia-slider" id="ns1" checked>
+                                <input type="radio" name="nostalgia-slider" id="ns2">
+                                <input type="radio" name="nostalgia-slider" id="ns3">
+                                <input type="radio" name="nostalgia-slider" id="ns4">
+                                <input type="radio" name="nostalgia-slider" id="ns5">
+                                <input type="radio" name="nostalgia-slider" id="ns6">
+                                <input type="radio" name="nostalgia-slider" id="ns7">
+                                <input type="radio" name="nostalgia-slider" id="ns8">
+                                <input type="radio" name="nostalgia-slider" id="ns9">
+                                <input type="radio" name="nostalgia-slider" id="ns10">
+
+                                <label for="ns1" id="nostalgia-slide1" class="nostalgia-slide">
+                                    <img src="{{ asset('img/nostalgia/img-320125812.jpg') }}" alt="KTX Legacy Product 1"
+                                         onerror="this.src='{{ asset('img/base/ktx_product.png') }}'">
+                                </label>
+                                <label for="ns2" id="nostalgia-slide2" class="nostalgia-slide">
+                                    <img src="{{ asset('img/nostalgia/img-320131000.jpg') }}" alt="KTX Legacy Product 2"
+                                         onerror="this.src='{{ asset('img/base/ktx_product.png') }}'">
+                                </label>
+                                <label for="ns3" id="nostalgia-slide3" class="nostalgia-slide">
+                                    <img src="{{ asset('img/nostalgia/img-320131343.jpg') }}" alt="KTX Legacy Product 3"
+                                         onerror="this.src='{{ asset('img/base/ktx_product.png') }}'">
+                                </label>
+                                <label for="ns4" id="nostalgia-slide4" class="nostalgia-slide">
+                                    <img src="{{ asset('img/nostalgia/img-320131648.jpg') }}" alt="KTX Legacy Product 4"
+                                         onerror="this.src='{{ asset('img/base/ktx_product.png') }}'">
+                                </label>
+                                <label for="ns5" id="nostalgia-slide5" class="nostalgia-slide">
+                                    <img src="{{ asset('img/nostalgia/img-320131910.jpg') }}" alt="KTX Legacy Product 5"
+                                         onerror="this.src='{{ asset('img/base/ktx_product.png') }}'">
+                                </label>
+                                <label for="ns6" id="nostalgia-slide6" class="nostalgia-slide">
+                                    <img src="{{ asset('img/nostalgia/img-320132237.jpg') }}" alt="KTX Legacy Product 6"
+                                         onerror="this.src='{{ asset('img/base/ktx_product.png') }}'">
+                                </label>
+                                <label for="ns7" id="nostalgia-slide7" class="nostalgia-slide">
+                                    <img src="{{ asset('img/nostalgia/img-320132438.jpg') }}" alt="KTX Legacy Product 7"
+                                         onerror="this.src='{{ asset('img/base/ktx_product.png') }}'">
+                                </label>
+                                <label for="ns8" id="nostalgia-slide8" class="nostalgia-slide">
+                                    <img src="{{ asset('img/nostalgia/img-320132632.jpg') }}" alt="KTX Legacy Product 8"
+                                         onerror="this.src='{{ asset('img/base/ktx_product.png') }}'">
+                                </label>
+                                <label for="ns9" id="nostalgia-slide9" class="nostalgia-slide">
+                                    <img src="{{ asset('img/nostalgia/img-320132833.jpg') }}" alt="KTX Legacy Product 9"
+                                         onerror="this.src='{{ asset('img/base/ktx_product.png') }}'">
+                                </label>
+                                <label for="ns10" id="nostalgia-slide10" class="nostalgia-slide">
+                                    <img src="{{ asset('img/nostalgia/img-320133010.jpg') }}" alt="KTX Legacy Product 10"
+                                         onerror="this.src='{{ asset('img/base/ktx_product.png') }}'">
+                                </label>
+                            </section>
+
+                            <!-- Navigation Controls -->
+                            <div class="nostalgia-controls">
+                                <button class="nostalgia-nav-btn prev-btn" onclick="goToSlide('prev')">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="nostalgia-nav-btn next-btn" onclick="goToSlide('next')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+
+                            <!-- Slide Indicators -->
+                            <div class="nostalgia-indicators">
+                                <label for="ns1" class="indicator active" data-slide="1"></label>
+                                <label for="ns2" class="indicator" data-slide="2"></label>
+                                <label for="ns3" class="indicator" data-slide="3"></label>
+                                <label for="ns4" class="indicator" data-slide="4"></label>
+                                <label for="ns5" class="indicator" data-slide="5"></label>
+                                <label for="ns6" class="indicator" data-slide="6"></label>
+                                <label for="ns7" class="indicator" data-slide="7"></label>
+                                <label for="ns8" class="indicator" data-slide="8"></label>
+                                <label for="ns9" class="indicator" data-slide="9"></label>
+                                <label for="ns10" class="indicator" data-slide="10"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <!-- Nostalgia End -->
 @endsection
+
 
 @push('styles')
     <style>
@@ -603,6 +704,239 @@
         .owl-dots button.active {
             background: white;
             transform: scale(1.2);
+        }
+
+        /* ====================================================================
+           Nostalgia 3D Slider - Pure CSS 3D Slider
+           ==================================================================== */
+        .nostalgia-slider-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            perspective: 1000px;
+            margin: 0 auto;
+        }
+
+        #nostalgia-slider {
+            height: 100%;
+            position: relative;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        #nostalgia-slider input[type=radio] {
+            display: none;
+        }
+
+        .nostalgia-slide {
+            margin: auto;
+            width: 60%;
+            height: 100%;
+            border-radius: 15px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nostalgia-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 3D Positioning Logic for 10 slides */
+        /* Far Left Position (-40%) */
+        #ns1:checked ~ #nostalgia-slide5, #ns2:checked ~ #nostalgia-slide6,
+        #ns3:checked ~ #nostalgia-slide7, #ns4:checked ~ #nostalgia-slide8,
+        #ns5:checked ~ #nostalgia-slide9, #ns6:checked ~ #nostalgia-slide10,
+        #ns7:checked ~ #nostalgia-slide1, #ns8:checked ~ #nostalgia-slide2,
+        #ns9:checked ~ #nostalgia-slide3, #ns10:checked ~ #nostalgia-slide4 {
+            box-shadow: 0 1px 4px 0 rgba(0,0,0,.37);
+            transform: translate3d(-40%,0,-300px);
+        }
+
+        /* Left Position (-25%) */
+        #ns1:checked ~ #nostalgia-slide4, #ns2:checked ~ #nostalgia-slide5,
+        #ns3:checked ~ #nostalgia-slide6, #ns4:checked ~ #nostalgia-slide7,
+        #ns5:checked ~ #nostalgia-slide8, #ns6:checked ~ #nostalgia-slide9,
+        #ns7:checked ~ #nostalgia-slide10, #ns8:checked ~ #nostalgia-slide1,
+        #ns9:checked ~ #nostalgia-slide2, #ns10:checked ~ #nostalgia-slide3 {
+            box-shadow: 0 1px 4px 0 rgba(0,0,0,.37);
+            transform: translate3d(-25%,0,-200px);
+        }
+
+        /* Left Center Position (-15%) */
+        #ns1:checked ~ #nostalgia-slide3, #ns2:checked ~ #nostalgia-slide4,
+        #ns3:checked ~ #nostalgia-slide5, #ns4:checked ~ #nostalgia-slide6,
+        #ns5:checked ~ #nostalgia-slide7, #ns6:checked ~ #nostalgia-slide8,
+        #ns7:checked ~ #nostalgia-slide9, #ns8:checked ~ #nostalgia-slide10,
+        #ns9:checked ~ #nostalgia-slide1, #ns10:checked ~ #nostalgia-slide2 {
+            box-shadow: 0 6px 10px 0 rgba(0,0,0,.3), 0 2px 2px 0 rgba(0,0,0,.2);
+            transform: translate3d(-15%,0,-100px);
+        }
+
+        /* Center Position (0%) - Active Slide */
+        #ns1:checked ~ #nostalgia-slide1, #ns2:checked ~ #nostalgia-slide2,
+        #ns3:checked ~ #nostalgia-slide3, #ns4:checked ~ #nostalgia-slide4,
+        #ns5:checked ~ #nostalgia-slide5, #ns6:checked ~ #nostalgia-slide6,
+        #ns7:checked ~ #nostalgia-slide7, #ns8:checked ~ #nostalgia-slide8,
+        #ns9:checked ~ #nostalgia-slide9, #ns10:checked ~ #nostalgia-slide10 {
+            box-shadow: 0 13px 25px 0 rgba(0,0,0,.3), 0 11px 7px 0 rgba(0,0,0,.19);
+            transform: translate3d(0,0,0);
+        }
+
+        /* Right Center Position (15%) */
+        #ns1:checked ~ #nostalgia-slide10, #ns2:checked ~ #nostalgia-slide1,
+        #ns3:checked ~ #nostalgia-slide2, #ns4:checked ~ #nostalgia-slide3,
+        #ns5:checked ~ #nostalgia-slide4, #ns6:checked ~ #nostalgia-slide5,
+        #ns7:checked ~ #nostalgia-slide6, #ns8:checked ~ #nostalgia-slide7,
+        #ns9:checked ~ #nostalgia-slide8, #ns10:checked ~ #nostalgia-slide9 {
+            box-shadow: 0 6px 10px 0 rgba(0,0,0,.3), 0 2px 2px 0 rgba(0,0,0,.2);
+            transform: translate3d(15%,0,-100px);
+        }
+
+        /* Right Position (25%) */
+        #ns1:checked ~ #nostalgia-slide9, #ns2:checked ~ #nostalgia-slide10,
+        #ns3:checked ~ #nostalgia-slide1, #ns4:checked ~ #nostalgia-slide2,
+        #ns5:checked ~ #nostalgia-slide3, #ns6:checked ~ #nostalgia-slide4,
+        #ns7:checked ~ #nostalgia-slide5, #ns8:checked ~ #nostalgia-slide6,
+        #ns9:checked ~ #nostalgia-slide7, #ns10:checked ~ #nostalgia-slide8 {
+            box-shadow: 0 1px 4px 0 rgba(0,0,0,.37);
+            transform: translate3d(25%,0,-200px);
+        }
+
+        /* Far Right Position (40%) */
+        #ns1:checked ~ #nostalgia-slide8, #ns2:checked ~ #nostalgia-slide9,
+        #ns3:checked ~ #nostalgia-slide10, #ns4:checked ~ #nostalgia-slide1,
+        #ns5:checked ~ #nostalgia-slide2, #ns6:checked ~ #nostalgia-slide3,
+        #ns7:checked ~ #nostalgia-slide4, #ns8:checked ~ #nostalgia-slide5,
+        #ns9:checked ~ #nostalgia-slide6, #ns10:checked ~ #nostalgia-slide7 {
+            box-shadow: 0 1px 4px 0 rgba(0,0,0,.37);
+            transform: translate3d(40%,0,-300px);
+        }
+
+        /* Navigation Controls */
+        .nostalgia-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .nostalgia-nav-btn {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nostalgia-nav-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nostalgia-nav-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Slide Indicators */
+        .nostalgia-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .indicator:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.2);
+        }
+
+        .indicator.active {
+            background: rgba(255, 255, 255, 1);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nostalgia-slider-container {
+                height: 400px;
+            }
+
+            .nostalgia-slide {
+                width: 70%;
+            }
+
+            .nostalgia-nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .indicator {
+                width: 8px;
+                height: 8px;
+            }
+
+            .nostalgia-indicators {
+                gap: 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nostalgia-slider-container {
+                height: 350px;
+            }
+
+            .nostalgia-slide {
+                width: 80%;
+            }
+
+            .indicator {
+                width: 6px;
+                height: 6px;
+            }
+
+            .nostalgia-indicators {
+                gap: 4px;
+            }
         }
     </style>
 @endpush
@@ -1141,6 +1475,169 @@
 
             // Start company info rotation automatically
             startCompanyInfoRotation();
+        });
+
+                // ====================================================================
+        // Nostalgia 3D Slider Functions
+        // ====================================================================
+        let currentSlide = 1; // Start with slide 1 (center)
+        const totalSlides = 10;
+
+        // Function to go to next/previous slide
+        function goToSlide(direction) {
+            if (direction === 'next') {
+                currentSlide = currentSlide >= totalSlides ? 1 : currentSlide + 1;
+            } else {
+                currentSlide = currentSlide <= 1 ? totalSlides : currentSlide - 1;
+            }
+
+            // Update radio button
+            const radioId = `ns${currentSlide}`;
+            const radio = document.getElementById(radioId);
+            if (radio) {
+                radio.checked = true;
+                updateIndicators();
+                console.log(`🔄 Moved to slide ${currentSlide}`);
+            }
+        }
+
+        // Function to go to specific slide
+        function goToSlideNumber(slideNumber) {
+            if (slideNumber >= 1 && slideNumber <= totalSlides) {
+                currentSlide = slideNumber;
+                const radioId = `ns${currentSlide}`;
+                const radio = document.getElementById(radioId);
+                if (radio) {
+                    radio.checked = true;
+                    updateIndicators();
+                    console.log(`🎯 Jumped to slide ${currentSlide}`);
+                }
+            }
+        }
+
+        // Function to update indicators
+        function updateIndicators() {
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                if (index + 1 === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        // Function to start auto-play
+        function startAutoPlay() {
+            if (window.nostalgiaAutoPlayInterval) {
+                clearInterval(window.nostalgiaAutoPlayInterval);
+            }
+
+            window.nostalgiaAutoPlayInterval = setInterval(() => {
+                goToSlide('next');
+            }, 3000); // Change slide every 3 seconds
+
+            console.log('▶️ Auto-play started');
+        }
+
+        // Function to stop auto-play
+        function stopAutoPlay() {
+            if (window.nostalgiaAutoPlayInterval) {
+                clearInterval(window.nostalgiaAutoPlayInterval);
+                window.nostalgiaAutoPlayInterval = null;
+                console.log('⏸️ Auto-play stopped');
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            switch (e.key) {
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    goToSlide('prev');
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    goToSlide('next');
+                    break;
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    e.preventDefault();
+                    goToSlideNumber(parseInt(e.key));
+                    break;
+                case '0':
+                    e.preventDefault();
+                    goToSlideNumber(10);
+                    break;
+                case ' ':
+                    e.preventDefault();
+                    if (window.nostalgiaAutoPlayInterval) {
+                        stopAutoPlay();
+                    } else {
+                        startAutoPlay();
+                    }
+                    break;
+            }
+        });
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next
+                    goToSlide('next');
+                } else {
+                    // Swipe right - previous
+                    goToSlide('prev');
+                }
+            }
+        }
+
+        // Initialize slider when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎠 Nostalgia 3D Slider initialized');
+
+            // Set up indicator click events
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    goToSlideNumber(index + 1);
+                });
+            });
+
+            // Start auto-play after 2 seconds
+            setTimeout(() => {
+                startAutoPlay();
+            }, 2000);
+
+            // Pause auto-play on hover
+            const slider = document.getElementById('nostalgia-slider');
+            if (slider) {
+                slider.addEventListener('mouseenter', stopAutoPlay);
+                slider.addEventListener('mouseleave', startAutoPlay);
+            }
         });
     </script>
 @endpush

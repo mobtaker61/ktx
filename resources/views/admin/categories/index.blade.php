@@ -19,7 +19,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Image</th>
                             <th>Name</th>
                             <th>Slug</th>
                             <th>Description</th>
@@ -32,7 +32,18 @@
                     <tbody>
                         @foreach($categories as $category)
                         <tr>
-                            <td>{{ $category->id }}</td>
+                            <td>
+                                @if($category->image)
+                                    <img src="{{ asset('storage/'.$category->image) }}" 
+                                         alt="{{ $category->name }}" 
+                                         class="category-thumbnail"
+                                         style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px;">
+                                @else
+                                    <div class="category-placeholder-thumbnail">
+                                        <i class="fas fa-image text-muted"></i>
+                                    </div>
+                                @endif
+                            </td>
                             <td>
                                 <strong>{{ $category->name }}</strong>
                                 @if($category->parent)
@@ -42,7 +53,7 @@
                             <td><code>{{ $category->slug }}</code></td>
                             <td>{{ Str::limit($category->description, 50) }}</td>
                             <td>
-                                <span class="badge bg-info">{{ $category->products_count ?? 0 }}</span>
+                                <span class="badge bg-info">{{ $category->products->count() }}</span>
                             </td>
                             <td>
                                 <span class="badge bg-{{ $category->status === 'active' ? 'success' : 'secondary' }}">
@@ -88,4 +99,33 @@
         @endif
     </div>
 </div>
+
+@push('styles')
+<style>
+.category-thumbnail {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.category-thumbnail:hover {
+    transform: scale(1.1);
+}
+
+.category-placeholder-thumbnail {
+    width: 50px;
+    height: 50px;
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+}
+
+.table td {
+    vertical-align: middle;
+}
+</style>
+@endpush
 @endsection

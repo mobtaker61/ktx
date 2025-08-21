@@ -128,7 +128,7 @@
 </div>
 <!-- Service End -->
 
-<!-- Feature Start -->
+<!-- Why Choose Us Start -->
 <div class="container-fluid bg-primary feature pt-5">
     <div class="container pt-5">
         <div class="row g-5">
@@ -181,84 +181,532 @@
         </div>
     </div>
 </div>
-<!-- Feature End -->
+<!-- Why Choose Us End -->
 
-<!-- FAQs Start -->
+<!-- Product Categories Start -->
 <div class="container-fluid py-5">
     <div class="container py-5">
-        <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Popular FAQs</div>
-            <h1 class="mb-4">Frequently Asked Questions</h1>
+        <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+            <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Our Products</div>
+            <h1 class="mb-4">Product Categories</h1>
+            <p class="mb-4">Explore our comprehensive range of industrial compressor solutions designed for various applications and industries worldwide.</p>
         </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="accordion" id="accordionFAQ1">
-                    <div class="accordion-item wow fadeIn" data-wow-delay="0.1s">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                What types of compressors do you offer?
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                            data-bs-parent="#accordionFAQ1">
-                            <div class="accordion-body">
-                                We offer a wide range of industrial compressors including air compressors, gas compressors, and specialized compressors for various industrial applications. Our products are designed for high performance and energy efficiency.
+
+        <div class="row g-4">
+            @forelse($categories as $category)
+            <div class="col-lg-3 col-md-6 wow fadeIn" data-wow-delay="{{ $loop->iteration * 0.1 }}s">
+                <div class="category-card" onclick="window.location.href='{{ route('products', ['category' => $category->slug]) }}'">
+                    <div class="category-image-container">
+                        @if($category->hasImage)
+                            <img src="{{ $category->image_url }}"
+                                 alt="{{ $category->display_name }}"
+                                 class="category-image"
+                                 loading="lazy"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="category-placeholder" style="display: none;">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                        @else
+                            <div class="category-placeholder">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                        @endif
+
+                        <!-- Product Count Overlay -->
+                        <div class="product-count-overlay">
+                            <span class="count-badge">{{ $category->products_count }}</span>
+                            <small class="count-text">Products</small>
+                        </div>
+
+                        <!-- Hover Overlay -->
+                        <div class="category-hover-overlay">
+                            <div class="hover-content">
+                                <i class="fas fa-arrow-right"></i>
+                                <span>View Products</span>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item wow fadeIn" data-wow-delay="0.2s">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Do you provide maintenance services?
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionFAQ1">
-                            <div class="accordion-body">
-                                Yes, we provide comprehensive maintenance and repair services for all our compressor systems. Our team of experts ensures optimal performance and longevity of your equipment.
-                            </div>
-                        </div>
+
+                    <div class="category-info">
+                        <h5 class="category-name">{{ $category->display_name }}</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="accordion" id="accordionFAQ2">
-                    <div class="accordion-item wow fadeIn" data-wow-delay="0.5s">
-                        <h2 class="accordion-header" id="headingFive">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                Can you customize compressors for specific needs?
-                            </button>
-                        </h2>
-                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-                            data-bs-parent="#accordionFAQ2">
-                            <div class="accordion-body">
-                                Absolutely! We specialize in customizing compressor solutions to meet your specific industrial requirements. Our engineering team works closely with you to design the perfect solution.
-                            </div>
-                        </div>
+            @empty
+            <div class="col-12 text-center">
+                <div class="py-5">
+                    <div class="empty-state-icon mb-3">
+                        <i class="fa fa-folder-open fa-4x text-muted"></i>
                     </div>
-                    <div class="accordion-item wow fadeIn" data-wow-delay="0.8s">
-                        <h2 class="accordion-header" id="headingEight">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                What industries do you serve?
-                            </button>
-                        </h2>
-                        <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
-                            data-bs-parent="#accordionFAQ2">
-                            <div class="accordion-body">
-                                We serve a wide range of industries including manufacturing, oil & gas, chemical processing, food & beverage, pharmaceuticals, and many others requiring industrial compressor solutions.
-                            </div>
-                        </div>
-                    </div>
+                    <h4 class="text-muted">No Product Categories Available</h4>
+                    <p class="text-muted">We're working on organizing our product categories. Please check back soon!</p>
                 </div>
+            </div>
+            @endforelse
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center mt-5">
+            <div class="cta-section wow fadeIn" data-wow-delay="0.5s">
+                <a href="{{ route('products') }}" class="btn btn-primary btn-lg rounded-pill px-5 py-3 shadow-lg">
+                    <i class="fa fa-th-large me-2"></i>
+                    Explore All Products
+                </a>
+                <p class="text-muted mt-3">Discover our complete range of industrial compressor solutions</p>
             </div>
         </div>
     </div>
 </div>
-<!-- FAQs End -->
+<!-- Product Categories End -->
 
+<!-- Video Section Start -->
+<div class="video-section position-relative">
+    <!-- Background Video -->
+    <div class="video-background">
+        <video class="background-video" autoplay loop muted playsinline>
+            <source src="{{ asset('videos/ktx_xiya_intro.webm') }}" type="video/webm">
+            <source src="{{ asset('videos/ktx_xiya_intro.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
 
+        <!-- Video Controls -->
+        <div class="video-controls">
+            <button class="btn btn-light btn-sm rounded-circle video-control-btn" id="muteBtn" title="Toggle Sound">
+                <i class="fas fa-volume-mute" id="muteIcon"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Video Section End -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const video = document.querySelector('.background-video');
+    const muteBtn = document.getElementById('muteBtn');
+    const muteIcon = document.getElementById('muteIcon');
+
+    if (video && muteBtn) {
+        // Initially muted
+        video.muted = true;
+
+        muteBtn.addEventListener('click', function() {
+            if (video.muted) {
+                video.muted = false;
+                muteIcon.className = 'fas fa-volume-up';
+                muteBtn.title = 'Mute Sound';
+            } else {
+                video.muted = true;
+                muteIcon.className = 'fas fa-volume-mute';
+                muteBtn.title = 'Unmute Sound';
+            }
+        });
+
+        // Handle video loading
+        video.addEventListener('loadeddata', function() {
+            console.log('Video loaded successfully');
+        });
+
+        video.addEventListener('error', function() {
+            console.error('Error loading video');
+        });
+    }
+});
+</script>
+
+<!-- News & Articles Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
+            <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Latest Updates</div>
+            <h1 class="mb-4">News & Articles</h1>
+            <p class="mb-4">Stay updated with the latest news, industry insights, and technological advancements in the compressor industry.</p>
+        </div>
+        <div class="row g-4">
+            @forelse($latestNews as $news)
+            <div class="col-lg-4 col-md-6 wow fadeIn" data-wow-delay="{{ $loop->iteration * 0.1 }}s">
+                <div class="news-item rounded overflow-hidden shadow-sm h-100">
+                    @if($news->image)
+                    <div class="news-image">
+                        <img src="{{ asset('storage/' . $news->image) }}"
+                             alt="{{ $news->title }}"
+                             class="img-fluid w-100"
+                             style="height: 200px; object-fit: cover;">
+                    </div>
+                    @else
+                    <div class="news-image bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fa fa-newspaper-o fa-3x text-muted"></i>
+                    </div>
+                    @endif
+                    <div class="news-content p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <small class="text-muted">
+                                <i class="fa fa-calendar me-1"></i>
+                                {{ $news->published_at ? $news->published_at->format('M d, Y') : 'Draft' }}
+                            </small>
+                            @if($news->author)
+                            <small class="text-muted">
+                                <i class="fa fa-user me-1"></i>
+                                {{ $news->author }}
+                            </small>
+                            @endif
+                        </div>
+                        <h5 class="mb-3">{{ Str::limit($news->title, 60) }}</h5>
+                        <p class="mb-3">{{ Str::limit($news->excerpt ?? $news->content, 120) }}</p>
+                        <a href="{{ route('news.show', $news->slug) }}" class="btn btn-outline-primary btn-sm rounded-pill">Read More</a>
+                    </div>
+                </div>
+            </div>
+            @empty
+            <div class="col-12 text-center">
+                <p class="text-muted">No news articles available at the moment.</p>
+            </div>
+            @endforelse
+        </div>
+        <div class="text-center mt-5">
+            <a href="{{ route('news.index') }}" class="btn btn-primary rounded-pill px-5">View All News</a>
+        </div>
+    </div>
+</div>
+<!-- News & Articles End -->
 @endsection
+
+@push('styles')
+<style>
+/* ====================================================================
+   CSS Variables
+   ==================================================================== */
+:root {
+    --primary: #0072b3;
+    --secondary: #15ACE1;
+}
+
+/* ====================================================================
+   Product Categories - Card Styles
+   ==================================================================== */
+.category-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    height: 100%;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 114, 179, 0.15);
+    border-color: var(--primary);
+}
+
+/* ====================================================================
+   Category Image & Container
+   ==================================================================== */
+.category-image-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.category-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform .4s ease;
+}
+
+.category-card:hover .category-image {
+    transform: scale(1.1);
+}
+
+.category-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 3rem;
+}
+
+/* ====================================================================
+   Overlay Styles
+   ==================================================================== */
+/* Product Count Overlay */
+.product-count-overlay {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 8px 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+}
+
+.count-badge {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.count-text {
+    color: #6c757d;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Hover Overlay */
+.category-hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 114, 179, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+.category-card:hover .category-hover-overlay {
+    opacity: 1;
+}
+
+.hover-content {
+    text-align: center;
+    color: white;
+    transform: translateY(20px);
+    transition: transform .3s ease;
+}
+
+.category-card:hover .hover-content {
+    transform: translateY(0);
+}
+
+.hover-content i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.hover-content span {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* ====================================================================
+   Category Info Section
+   ==================================================================== */
+.category-info {
+    padding: 1.25rem;
+    text-align: center;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.category-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.75rem;
+    transition: color .3s ease;
+}
+
+.category-card:hover .category-name {
+    color: var(--primary);
+}
+
+/* ====================================================================
+   Utility Styles
+   ==================================================================== */
+/* Empty State */
+.empty-state-icon {
+    opacity: 0.6;
+}
+
+/* CTA Section */
+.cta-section .btn {
+    transition: all .3s ease;
+}
+
+.cta-section .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 114, 179, 0.3) !important;
+}
+
+/* ====================================================================
+   Video Section - Background Video
+   ==================================================================== */
+.video-section {
+    height: 50vh;
+    min-height: 300px;
+    overflow: hidden;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+}
+
+/* Video Controls */
+.video-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+.video-control-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    backdrop-filter: blur(10px);
+    transition: all .3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.video-control-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.video-control-btn i {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Video Content Overlay */
+.video-content-overlay {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.video-content {
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.video-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.video-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.video-content .btn {
+    font-weight: 600;
+    transition: all .3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.video-content .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* ====================================================================
+   Responsive Design
+   ==================================================================== */
+@media (max-width: 768px) {
+    .category-image-container {
+        height: 160px;
+    }
+
+    .category-info {
+        padding: 1rem;
+    }
+
+    .category-name {
+        font-size: 1rem;
+    }
+
+    .product-count-overlay {
+        top: 10px;
+        right: 10px;
+        padding: 6px 10px;
+    }
+
+    .count-badge {
+        font-size: 1rem;
+    }
+
+    .count-text {
+        font-size: 0.7rem;
+    }
+
+    /* Video Section Mobile */
+    .video-section {
+        height: 70vh;
+        min-height: 500px;
+    }
+
+    .video-content h1 {
+        font-size: 2rem;
+    }
+
+    .video-content p {
+        font-size: 1rem;
+    }
+
+    .video-content {
+        padding: 1.5rem;
+    }
+
+    .video-controls {
+        top: 15px;
+        right: 15px;
+    }
+
+    .video-control-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .video-control-btn i {
+        font-size: 0.9rem;
+    }
+}
+</style>
+@endpush

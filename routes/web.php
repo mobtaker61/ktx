@@ -3,6 +3,7 @@
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\PortfolioController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\ServiceController;
@@ -35,6 +36,9 @@ Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('servic
 
 Route::get('/team', [TeamController::class, 'index'])->name('team');
 Route::get('/certificates', [App\Http\Controllers\Frontend\CertificateController::class, 'index'])->name('certificates');
+
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
@@ -70,6 +74,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::resource('career-opportunities', App\Http\Controllers\Admin\CareerOpportunityController::class);
     Route::resource('job-applications', App\Http\Controllers\Admin\JobApplicationController::class);
     Route::resource('certificates', App\Http\Controllers\Admin\CertificateController::class);
+    Route::resource('news', App\Http\Controllers\Admin\NewsController::class);
 
     // Career Opportunities additional routes
     Route::patch('/career-opportunities/{careerOpportunity}/toggle-status', [App\Http\Controllers\Admin\CareerOpportunityController::class, 'toggleStatus'])->name('career-opportunities.toggleStatus');
