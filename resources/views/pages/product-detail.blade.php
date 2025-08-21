@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
-@section('title', $product->name . ' - KTX')
+@section('title', $product->name . ' - KTX Nova Compressor Group | Product Details')
+
+@section('meta_description', $product->description ?: 'Explore ' . $product->name . ' from KTX Nova Compressor Group. High-quality industrial compressor solutions for various applications.')
+@section('meta_keywords', 'KTX product, ' . $product->name . ', industrial compressor, compressor solutions, ' . ($product->category ? $product->category->name : 'compressor equipment') . ', Dubai compressor company')
+
+@section('og_title', $product->name . ' - KTX Nova Compressor Group')
+@section('og_description', $product->description ?: 'Explore ' . $product->name . ' from KTX Nova Compressor Group. High-quality industrial compressor solutions.')
+@section('og_image', asset($product->image ?: 'img/service-1.jpg'))
+@section('og_type', 'product')
+
+@section('twitter_title', $product->name . ' - KTX Nova Compressor Group')
+@section('twitter_description', $product->description ?: 'Explore ' . $product->name . ' from KTX Nova Compressor Group.')
+@section('twitter_card', 'summary_large_image')
 
 @section('hero_title', $product->name)
 
@@ -11,6 +23,9 @@
 @endsection
 
 @section('content')
+    <!-- GTM Product Detail Page Tracking -->
+    <x-gtm-tracking event="page_view" :data="['page_title' => $product->name, 'page_type' => 'product_detail', 'user_type' => 'visitor', 'product_category' => $product->category ? $product->category->name : 'Uncategorized']" />
+
     <!-- Product Detail Start -->
     <div class="container-fluid py-5">
         <div class="container">
@@ -285,6 +300,17 @@
 
                     // Update active indicator
                     updateActiveIndicator(slideIndex);
+
+                    // GTM Product Image Navigation Tracking
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'product_image_navigation', {
+                            'event_category': 'product_interaction',
+                            'event_label': 'image_thumbnail_click',
+                            'product_name': '{{ $product->name }}',
+                            'slide_index': slideIndex,
+                            'total_slides': {{ ($product->gallery ? count($product->gallery) : 0) + 1 }}
+                        });
+                    }
                 });
             });
 

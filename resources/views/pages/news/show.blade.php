@@ -1,13 +1,19 @@
 @extends('layouts.app')
 
-@section('title', $news->title . ' - KTX Compressor')
+@section('title', $news->title . ' - KTX Nova Compressor Group | News & Articles')
 
-@section('meta_description', $news->excerpt)
-@section('meta_keywords', 'KTX news, ' . $news->title . ', compressor industry, industrial equipment')
+@section('meta_description', $news->excerpt ?: 'Read the latest news and insights from KTX Nova Compressor Group about industrial compressors and industry developments.')
+@section('meta_keywords', 'KTX news, ' . $news->title . ', compressor industry, industrial equipment, industrial compressors, Dubai compressor company')
 
-@section('og_title', $news->title . ' - KTX Compressor')
-@section('og_description', $news->excerpt)
+@section('og_title', $news->title . ' - KTX Nova Compressor Group')
+@section('og_description', $news->excerpt ?: 'Read the latest news and insights from KTX Nova Compressor Group about industrial compressors and industry developments.')
 @section('og_image', $news->image ? asset('storage/' . $news->image) : asset('img/base/ktx_logo.png'))
+@section('og_type', 'article')
+@section('og_site_name', 'KTX Nova Compressor Group')
+
+@section('twitter_title', $news->title . ' - KTX Nova Compressor Group')
+@section('twitter_description', $news->excerpt ?: 'Read the latest news and insights from KTX Nova Compressor Group.')
+@section('twitter_card', 'summary_large_image')
 
 @section('hero_title', $news->title)
 
@@ -17,6 +23,9 @@
 @endsection
 
 @section('content')
+<!-- GTM News Article View Tracking -->
+<x-gtm-tracking event="page_view" :data="['page_title' => $news->title, 'page_type' => 'news_article', 'user_type' => 'visitor', 'article_status' => $news->status, 'article_author' => $news->author ?? 'Unknown']" />
+
 <!-- News Detail Start -->
 <div class="container-fluid">
     <div class="container py-5">

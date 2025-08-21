@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'About Us - KTX')
+@section('title', 'About Us - KTX Nova Compressor Group | Industrial Compressor Solutions')
+
+@section('meta_description', 'Learn about KTX Nova Compressor Group - a global alliance delivering advanced industrial compressor solutions. Japanese innovation, Chinese manufacturing excellence, and international market expertise.')
+@section('meta_keywords', 'KTX about us, industrial compressor company, compressor manufacturing, Dubai compressor company, Japanese innovation, Chinese manufacturing, global compressor solutions')
+
+@section('og_title', 'About KTX Nova Compressor Group - Industrial Compressor Solutions')
+@section('og_description', 'Learn about KTX Nova Compressor Group - a global alliance delivering advanced industrial compressor solutions with Japanese innovation and Chinese manufacturing excellence.')
+@section('og_image', asset('img/base/ktx_3d_model.png'))
+@section('og_type', 'website')
+
+@section('twitter_title', 'About KTX Nova Compressor Group - Industrial Compressor Solutions')
+@section('twitter_description', 'Learn about KTX Nova Compressor Group - a global alliance delivering advanced industrial compressor solutions.')
+@section('twitter_card', 'summary_large_image')
 
 @section('hero_title', 'About Us')
 
@@ -11,6 +23,9 @@
 @section('hero_image', asset('img/base/ktx_shaft.png'))
 
 @section('content')
+    <!-- GTM About Page Tracking -->
+    <x-gtm-tracking event="page_view" :data="['page_title' => 'About Us', 'page_type' => 'company_info', 'user_type' => 'visitor']" />
+
     <!-- About Start -->
     <div class="container-fluid py-5">
         <div class="container py-5">
@@ -55,6 +70,9 @@
     <!-- Companeis at a glance Start -->
     <div class="container-fluid py-5 bg-primary feature">
         <div class="container py-5">
+            <!-- GTM Companies Section Tracking -->
+            <x-gtm-tracking event="section_view" :data="['section_name' => 'companies_triangle', 'section_type' => 'company_showcase', 'companies_count' => 3]" />
+
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
                 <h5 class="text-white">Companies at a Glance</h5>
                 <h1 class="mb-3 text-white">The Power of Three</h1>
@@ -330,6 +348,9 @@
     <!-- Nostalgia Start -->
     <div class="container-fluid bg-primary py-5">
         <div class="container py-5">
+            <!-- GTM Nostalgia Section Tracking -->
+            <x-gtm-tracking event="section_view" :data="['section_name' => 'nostalgia_slider', 'section_type' => 'legacy_showcase', 'images_count' => 10]" />
+
             <div class="row g-5 align-items-center">
                 <div class="col-lg-12 wow fadeIn" data-wow-delay="0.1s">
                     <div class="text-center">
@@ -967,6 +988,16 @@
             if (selectedLogo) {
                 selectedLogo.classList.add('active');
             }
+
+            // GTM Company Selection Tracking
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'company_info_view', {
+                    'event_category': 'company_interaction',
+                    'event_label': company,
+                    'company_name': company,
+                    'interaction_type': 'logo_click'
+                });
+            }
         }
 
         // Function to preload images
@@ -1498,6 +1529,17 @@
                 radio.checked = true;
                 updateIndicators();
                 console.log(`🔄 Moved to slide ${currentSlide}`);
+
+                // GTM Slide Navigation Tracking
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'nostalgia_slide_navigation', {
+                        'event_category': 'slider_interaction',
+                        'event_label': `slide_${currentSlide}`,
+                        'slide_number': currentSlide,
+                        'navigation_direction': direction,
+                        'total_slides': totalSlides
+                    });
+                }
             }
         }
 

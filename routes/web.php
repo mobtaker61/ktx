@@ -54,7 +54,7 @@ Route::get('/company-gallery', [App\Http\Controllers\CompanyGalleryController::c
 
 // Admin Routes - Protected by auth middleware only
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
-    Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('products', App\Http\Controllers\Admin\ProductController::class);

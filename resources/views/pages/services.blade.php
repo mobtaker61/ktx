@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Our Services - KTX')
+@section('title', 'Our Services - KTX Nova Compressor Group | Industrial Compressor Solutions')
+
+@section('meta_description', 'KTX Nova Compressor Group provides comprehensive industrial compressor solutions including technical consulting, after-sales support, and global project development services.')
+@section('meta_keywords', 'KTX services, industrial compressor solutions, technical consulting, after-sales support, global project development, compressor maintenance, Dubai compressor services')
+
+@section('og_title', 'Our Services - KTX Nova Compressor Group | Industrial Compressor Solutions')
+@section('og_description', 'KTX Nova Compressor Group provides comprehensive industrial compressor solutions including technical consulting, after-sales support, and global project development.')
+@section('og_image', asset('img/ktx_logo_sq.jpg'))
+@section('og_type', 'website')
+
+@section('twitter_title', 'Our Services - KTX Nova Compressor Group | Industrial Compressor Solutions')
+@section('twitter_description', 'KTX Nova Compressor Group provides comprehensive industrial compressor solutions and technical support.')
+@section('twitter_card', 'summary_large_image')
 
 @section('hero_title', 'Our Services')
 
@@ -9,6 +21,9 @@
 @endsection
 
 @section('content')
+<!-- GTM Services Page Tracking -->
+<x-gtm-tracking event="page_view" :data="['page_title' => 'Our Services', 'page_type' => 'services_showcase', 'user_type' => 'visitor', 'services_count' => count($services)]" />
+
 <!-- Services Start -->
 <div class="container-fluid py-5">
     <div class="container">

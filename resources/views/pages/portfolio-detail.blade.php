@@ -1,8 +1,23 @@
 @extends('layouts.app')
 
-@section('title', $portfolio->title . ' - KTX')
+@section('title', $portfolio->title . ' - KTX Nova Compressor Group | Project Details')
+
+@section('meta_description', $portfolio->description ?: 'Explore ' . $portfolio->title . ' project completed by KTX Nova Compressor Group. Industrial compressor solutions and successful installations.')
+@section('meta_keywords', 'KTX project, ' . $portfolio->title . ', industrial compressor project, compressor installation, manufacturing project, Dubai compressor company')
+
+@section('og_title', $portfolio->title . ' - KTX Nova Compressor Group')
+@section('og_description', $portfolio->description ?: 'Explore ' . $portfolio->title . ' project completed by KTX Nova Compressor Group.')
+@section('og_image', asset('img/hero-img.png'))
+@section('og_type', 'website')
+
+@section('twitter_title', $portfolio->title . ' - KTX Nova Compressor Group')
+@section('twitter_description', $portfolio->description ?: 'Explore ' . $portfolio->title . ' project completed by KTX Nova Compressor Group.')
+@section('twitter_card', 'summary_large_image')
 
 @section('content')
+<!-- GTM Portfolio Detail Page Tracking -->
+<x-gtm-tracking event="page_view" :data="['page_title' => $portfolio->title, 'page_type' => 'portfolio_detail', 'user_type' => 'visitor', 'project_category' => $portfolio->category, 'project_status' => 'completed']" />
+
 <!-- Hero Start -->
 <div class="container-fluid pt-5 bg-primary hero-header">
     <div class="container pt-5">

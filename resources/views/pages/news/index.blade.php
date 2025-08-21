@@ -1,13 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'News & Articles - KTX Compressor')
+@section('title', 'News & Articles - KTX Nova Compressor Group | Industry Insights & Updates')
 
-@section('meta_description', 'Stay updated with the latest news, industry insights, and technological advancements in the compressor industry from KTX.')
-@section('meta_keywords', 'compressor news, industrial compressor articles, KTX news, compressor industry updates, industrial equipment news')
+@section('meta_description', 'Stay updated with the latest news, industry insights, and technological advancements in the industrial compressor industry from KTX Nova Compressor Group.')
+@section('meta_keywords', 'compressor news, industrial compressor articles, KTX news, compressor industry updates, industrial equipment news, Dubai compressor company')
 
-@section('og_title', 'News & Articles - KTX Compressor')
-@section('og_description', 'Stay updated with the latest news, industry insights, and technological advancements in the compressor industry.')
-@section('og_image', asset('img/base/ktx_logo.png'))
+@section('og_title', 'News & Articles - KTX Nova Compressor Group | Industry Insights')
+@section('og_description', 'Stay updated with the latest news, industry insights, and technological advancements in the industrial compressor industry from KTX Nova Compressor Group.')
+@section('og_image', asset('img/ktx_logo_sq.jpg'))
+@section('og_type', 'website')
+
+@section('twitter_title', 'News & Articles - KTX Nova Compressor Group | Industry Insights')
+@section('twitter_description', 'Stay updated with the latest news, industry insights, and technological advancements in the industrial compressor industry.')
+@section('twitter_card', 'summary_large_image')
 
 @section('hero_title', 'News & Articles')
 
@@ -16,6 +21,9 @@
 @endsection
 
 @section('content')
+<!-- GTM News Index Page Tracking -->
+<x-gtm-tracking event="page_view" :data="['page_title' => 'News & Articles', 'page_type' => 'news_listing', 'user_type' => 'visitor', 'articles_count' => count($news)]" />
+
 <!-- News List Start -->
 <div class="container-fluid">
     <div class="container py-5">

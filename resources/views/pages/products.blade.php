@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Our Products - KTX')
+@section('title', 'Our Products - KTX Nova Compressor Group | Industrial Compressors & Solutions')
+
+@section('meta_description', 'Explore KTX Nova Compressor Group\'s comprehensive range of industrial compressors. Air compressors, screw compressors, piston compressors, and centrifugal compressors for various industries.')
+@section('meta_keywords', 'industrial compressors, air compressors, screw compressors, piston compressors, centrifugal compressors, KTX products, compressor solutions, industrial equipment')
+
+@section('og_title', 'Our Products - KTX Nova Compressor Group | Industrial Compressors')
+@section('og_description', 'Explore KTX Nova Compressor Group\'s comprehensive range of industrial compressors and solutions for various industries worldwide.')
+@section('og_image', asset('img/base/ktx_engine.png'))
+@section('og_type', 'website')
+
+@section('twitter_title', 'Our Products - KTX Nova Compressor Group | Industrial Compressors')
+@section('twitter_description', 'Explore KTX Nova Compressor Group\'s comprehensive range of industrial compressors and solutions.')
+@section('twitter_card', 'summary_large_image')
 
 @section('hero_title', 'Our Products')
 
@@ -11,6 +23,9 @@
 @section('hero_image', asset('img/base/ktx_engine.png'))
 
 @section('content')
+    <!-- GTM Products Page Tracking -->
+    <x-gtm-tracking event="page_view" :data="['page_title' => 'Products', 'page_type' => 'product_listing', 'user_type' => 'visitor']" />
+    
     <!-- GTM Product List Tracking -->
     <x-gtm-tracking event="product_list_view" :data="['category' => request()->get('category', 'all'), 'products_count' => $products->count()]" />
 
@@ -539,6 +554,17 @@
             } else {
                 parentCategory.classList.add('expanded');
                 subcategories.style.display = 'block';
+            }
+
+            // GTM Subcategory Toggle Tracking
+            if (typeof gtag !== 'undefined') {
+                const categoryName = parentCategory.querySelector('.category-name').textContent;
+                gtag('event', 'subcategory_toggle', {
+                    'event_category': 'category_interaction',
+                    'event_label': categoryName,
+                    'category_name': categoryName,
+                    'action': isExpanded ? 'collapse' : 'expand'
+                });
             }
         }
 

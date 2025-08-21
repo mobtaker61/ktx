@@ -2,17 +2,24 @@
 
 @section('title', 'KTX - Industrial Compressors for Your Projects')
 
-@section('meta_description', 'KTX specializes in industrial compressors with unique and innovative technology. We provide cutting-edge solutions for industrial applications worldwide including air compressors, screw compressors, and compressor parts.')
-@section('meta_keywords', 'industrial compressor, air compressor, screw compressor, compressor parts, compressor service, KTX, industrial equipment, compressor technology, industrial solutions, manufacturing equipment')
+@section('meta_description', 'KTX Nova Compressor Group - Leading provider of industrial compressors with Japanese innovation, Chinese manufacturing excellence, and global market expertise. Air compressors, screw compressors, and industrial solutions.')
+@section('meta_keywords', 'industrial compressor, air compressor, screw compressor, compressor parts, KTX, industrial equipment, compressor technology, manufacturing solutions, Dubai compressor, industrial solutions')
 
-@section('og_title', 'KTX - Industrial Compressors for Your Projects')
-@section('og_description', 'Leading provider of industrial compressors with unique and innovative technology. Expert engineering and reliable solutions worldwide.')
-@section('og_image', asset('img/base/ktx_logo.png'))
+@section('og_title', 'KTX Nova Compressor Group - Industrial Compressors & Solutions')
+@section('og_description', 'Leading provider of industrial compressors with Japanese innovation, Chinese manufacturing excellence, and global market expertise. Based in Dubai, serving worldwide.')
+@section('og_image', asset('img/ktx_logo_sq.jpg'))
+@section('og_type', 'website')
+@section('og_site_name', 'KTX Nova Compressor Group')
 
-@section('twitter_title', 'KTX - Industrial Compressors for Your Projects')
-@section('twitter_description', 'Leading provider of industrial compressors with unique and innovative technology. Expert engineering and reliable solutions worldwide.')
+@section('twitter_title', 'KTX Nova Compressor Group - Industrial Compressors & Solutions')
+@section('twitter_description', 'Leading provider of industrial compressors with Japanese innovation, Chinese manufacturing excellence, and global market expertise.')
+@section('twitter_card', 'summary_large_image')
+@section('twitter_site', '@ktxcompressor')
 
 @section('content')
+<!-- GTM Home Page Tracking -->
+<x-gtm-tracking event="page_view" :data="['page_title' => 'Home', 'page_type' => 'landing', 'user_type' => 'visitor']" />
+
 <!-- Hero Start - Special for Home Page -->
 <div class="container-fluid pt-5 bg-primary hero-header mb-5">
     <div class="container pt-5">
@@ -186,6 +193,9 @@
 <!-- Product Categories Start -->
 <div class="container-fluid py-5">
     <div class="container py-5">
+        <!-- GTM Product Categories Section Tracking -->
+        <x-gtm-tracking event="section_view" :data="['section_name' => 'product_categories', 'section_type' => 'product_showcase', 'categories_count' => count($categories)]" />
+
         <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
             <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Our Products</div>
             <h1 class="mb-4">Product Categories</h1>
@@ -261,6 +271,9 @@
 
 <!-- Video Section Start -->
 <div class="video-section position-relative">
+    <!-- GTM Video Section Tracking -->
+    <x-gtm-tracking event="section_view" :data="['section_name' => 'video_section', 'section_type' => 'brand_video', 'video_source' => 'ktx_xiya_intro']" />
+
     <!-- Background Video -->
     <div class="video-background">
         <video class="background-video" autoplay loop muted playsinline>
@@ -294,28 +307,102 @@ document.addEventListener('DOMContentLoaded', function() {
                 video.muted = false;
                 muteIcon.className = 'fas fa-volume-up';
                 muteBtn.title = 'Mute Sound';
+
+                // GTM Video Unmute Tracking
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'video_unmute', {
+                        'event_category': 'video_interaction',
+                        'event_label': 'ktx_xiya_intro',
+                        'video_title': 'KTX Xiya Introduction'
+                    });
+                }
             } else {
                 video.muted = true;
                 muteIcon.className = 'fas fa-volume-mute';
                 muteBtn.title = 'Unmute Sound';
+
+                // GTM Video Mute Tracking
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'video_mute', {
+                        'event_category': 'video_interaction',
+                        'event_label': 'ktx_xiya_intro',
+                        'video_title': 'KTX Xiya Introduction'
+                    });
+                }
             }
         });
 
         // Handle video loading
         video.addEventListener('loadeddata', function() {
             console.log('Video loaded successfully');
+
+            // GTM Video Load Tracking
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'video_load', {
+                    'event_category': 'video_interaction',
+                    'event_label': 'ktx_xiya_intro',
+                    'video_title': 'KTX Xiya Introduction'
+                });
+            }
         });
 
         video.addEventListener('error', function() {
             console.error('Error loading video');
+
+            // GTM Video Error Tracking
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'video_error', {
+                    'event_category': 'video_interaction',
+                    'event_label': 'ktx_xiya_intro',
+                    'video_title': 'KTX Xiya Introduction',
+                    'error_type': 'load_failed'
+                });
+            }
         });
     }
+
+    // GTM Category Card Click Tracking
+    const categoryCards = document.querySelectorAll('.category-card');
+    categoryCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const categoryName = this.querySelector('.category-name').textContent;
+            const productCount = this.querySelector('.count-badge').textContent;
+
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'category_card_click', {
+                    'event_category': 'product_interaction',
+                    'event_label': categoryName,
+                    'category_name': categoryName,
+                    'product_count': productCount
+                });
+            }
+        });
+    });
+
+    // GTM News Article Click Tracking
+    const newsLinks = document.querySelectorAll('.news-item a[href*="/news/"]');
+    newsLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const articleTitle = this.closest('.news-item').querySelector('h5').textContent;
+
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'news_article_click', {
+                    'event_category': 'content_interaction',
+                    'event_label': articleTitle,
+                    'article_title': articleTitle
+                });
+            }
+        });
+    });
 });
 </script>
 
 <!-- News & Articles Start -->
 <div class="container-fluid py-5">
     <div class="container py-5">
+        <!-- GTM News Section Tracking -->
+        <x-gtm-tracking event="section_view" :data="['section_name' => 'news_articles', 'section_type' => 'content_showcase', 'articles_count' => count($latestNews)]" />
+
         <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
             <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Latest Updates</div>
             <h1 class="mb-4">News & Articles</h1>
@@ -549,7 +636,7 @@ document.addEventListener('DOMContentLoaded', function() {
    Video Section - Background Video
    ==================================================================== */
 .video-section {
-    height: 50vh;
+    height: 65vh;
     min-height: 300px;
     overflow: hidden;
 }

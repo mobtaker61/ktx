@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Our Portfolio - KTX')
+@section('title', 'Our Portfolio - KTX Nova Compressor Group | Completed Projects & Installations')
+
+@section('meta_description', 'Explore KTX Nova Compressor Group\'s successful projects and installations across various industries. Industrial compressor solutions, manufacturing projects, and energy sector installations.')
+@section('meta_keywords', 'KTX portfolio, compressor projects, industrial installations, manufacturing projects, energy sector projects, completed projects, Dubai compressor company')
+
+@section('og_title', 'Our Portfolio - KTX Nova Compressor Group | Completed Projects')
+@section('og_description', 'Explore KTX Nova Compressor Group\'s successful projects and installations across various industries worldwide.')
+@section('og_image', asset('img/base/ktx_portfolio_ct0.png'))
+@section('og_type', 'website')
+
+@section('twitter_title', 'Our Portfolio - KTX Nova Compressor Group | Completed Projects')
+@section('twitter_description', 'Explore KTX Nova Compressor Group\'s successful projects and installations across various industries.')
+@section('twitter_card', 'summary_large_image')
 
 @section('hero_title', 'Our Portfolio')
 
@@ -11,6 +23,9 @@
 @section('hero_image', asset('img/base/ktx_portfolio_ct0.png'))
 
 @section('content')
+    <!-- GTM Portfolio Page Tracking -->
+    <x-gtm-tracking event="page_view" :data="['page_title' => 'Our Portfolio', 'page_type' => 'portfolio_showcase', 'user_type' => 'visitor', 'projects_count' => count($portfolios)]" />
+
     <!-- Portfolio Start -->
     <div class="container-fluid py-5">
         <div class="container">
@@ -699,6 +714,17 @@
                 category: portfolioCard.querySelector('.portfolio-category .badge').textContent,
                 status: 'Completed'
             };
+
+            // GTM Portfolio Modal Open Tracking
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'portfolio_modal_open', {
+                    'event_category': 'portfolio_interaction',
+                    'event_label': portfolioData.title,
+                    'portfolio_id': portfolioId,
+                    'portfolio_title': portfolioData.title,
+                    'portfolio_category': portfolioData.category
+                });
+            }
 
             // Load portfolio data with gallery
             loadPortfolioDataWithGallery(portfolioData);

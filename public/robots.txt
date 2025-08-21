@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: {{ url('/sitemap.xml') }}
+Sitemap: https://ktxcompressor.com/sitemap.xml
 
 # Disallow admin area
 Disallow: /admin/

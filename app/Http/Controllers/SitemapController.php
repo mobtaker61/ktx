@@ -112,7 +112,7 @@ class SitemapController extends Controller
             foreach ($categories as $category) {
                 $content .= '
     <url>
-        <loc>'.url('/products/category/'.$category->slug).'</loc>
+        <loc>'.url('/products?category='.$category->slug).'</loc>
         <lastmod>'.$category->updated_at->toISOString().'</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>

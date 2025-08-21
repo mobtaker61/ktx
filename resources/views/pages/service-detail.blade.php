@@ -1,8 +1,23 @@
 @extends('layouts.app')
 
-@section('title', $service->title . ' - KTX')
+@section('title', $service->title . ' - KTX Nova Compressor Group | Service Details')
+
+@section('meta_description', $service->description ?: 'Learn about ' . $service->title . ' service from KTX Nova Compressor Group. Professional industrial compressor solutions and support services.')
+@section('meta_keywords', 'KTX service, ' . $service->title . ', industrial compressor service, compressor maintenance, technical support, Dubai compressor service')
+
+@section('og_title', $service->title . ' - KTX Nova Compressor Group')
+@section('og_description', $service->description ?: 'Learn about ' . $service->title . ' service from KTX Nova Compressor Group.')
+@section('og_image', asset('img/service-1.jpg'))
+@section('og_type', 'website')
+
+@section('twitter_title', $service->title . ' - KTX Nova Compressor Group')
+@section('twitter_description', $service->description ?: 'Learn about ' . $service->title . ' service from KTX Nova Compressor Group.')
+@section('twitter_card', 'summary_large_image')
 
 @section('content')
+<!-- GTM Service Detail Page Tracking -->
+<x-gtm-tracking event="page_view" :data="['page_title' => $service->title, 'page_type' => 'service_detail', 'user_type' => 'visitor', 'service_category' => 'industrial_compressor']" />
+
 <!-- Hero Start -->
 <div class="container-fluid pt-5 bg-primary hero-header">
     <div class="container pt-5">

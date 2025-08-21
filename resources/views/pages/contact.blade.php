@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us - KTX')
+@section('title', 'Contact Us - KTX Nova Compressor Group | Get In Touch')
+
+@section('meta_description', 'Contact KTX Nova Compressor Group in Dubai, UAE. Get expert consultation for industrial compressor solutions, technical support, and sales inquiries.')
+@section('meta_keywords', 'contact KTX, compressor company contact, Dubai compressor company, industrial compressor consultation, technical support, sales inquiry')
+
+@section('og_title', 'Contact Us - KTX Nova Compressor Group | Get In Touch')
+@section('og_description', 'Contact KTX Nova Compressor Group in Dubai, UAE. Get expert consultation for industrial compressor solutions and technical support.')
+@section('og_image', asset('img/base/ktx_contact.png'))
+@section('og_type', 'website')
+
+@section('twitter_title', 'Contact Us - KTX Nova Compressor Group | Get In Touch')
+@section('twitter_description', 'Contact KTX Nova Compressor Group in Dubai, UAE. Get expert consultation for industrial compressor solutions.')
+@section('twitter_card', 'summary_large_image')
 
 @section('hero_title', 'Contact Us')
 
@@ -11,6 +23,9 @@
 @section('hero_image', asset('img/base/ktx_contact.png'))
 
 @section('content')
+<!-- GTM Contact Page Tracking -->
+<x-gtm-tracking event="page_view" :data="['page_title' => 'Contact Us', 'page_type' => 'contact_form', 'user_type' => 'visitor']" />
+
 <!-- Contact Start -->
 <div class="container-fluid py-5">
     <div class="container py-5">
@@ -270,31 +285,69 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     `);
 
-    // Newsletter form submission
-    const newsletterForm = document.querySelector('.newsletter form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
+            // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
 
-            // Show success message
-            const button = this.querySelector('button');
-            const originalText = button.innerHTML;
-            button.innerHTML = '<i class="fas fa-check me-2"></i>Subscribed!';
-            button.classList.remove('btn-primary');
-            button.classList.add('btn-success');
+                // GTM Newsletter Subscription Tracking
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'newsletter_subscription', {
+                        'event_category': 'form_submission',
+                        'event_label': 'newsletter_signup',
+                        'email_provided': email ? 'yes' : 'no'
+                    });
+                }
 
-            // Reset form
-            this.reset();
+                // Show success message
+                const button = this.querySelector('button');
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check me-2"></i>Subscribed!';
+                button.classList.remove('btn-primary');
+                button.classList.add('btn-success');
 
-            // Reset button after 3 seconds
-            setTimeout(() => {
-                button.innerHTML = originalText;
-                button.classList.remove('btn-success');
-                button.classList.add('btn-primary');
-            }, 3000);
-        });
-    }
+                // Reset form
+                this.reset();
+
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('btn-success');
+                    button.classList.add('btn-primary');
+                }, 3000);
+            });
+        }
+
+        // GTM Contact Form Interaction Tracking
+        const contactForm = document.querySelector('form[action*="contact"]');
+        if (contactForm) {
+            const formFields = contactForm.querySelectorAll('input, select, textarea');
+
+            formFields.forEach(field => {
+                field.addEventListener('focus', function() {
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'form_field_focus', {
+                            'event_category': 'form_interaction',
+                            'event_label': this.name || this.id,
+                            'field_name': this.name || this.id,
+                            'field_type': this.type
+                        });
+                    }
+                });
+            });
+
+            contactForm.addEventListener('submit', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'contact_form_submission', {
+                        'event_category': 'form_submission',
+                        'event_label': 'contact_inquiry',
+                        'form_type': 'contact_form'
+                    });
+                }
+            });
+        }
 });
 </script>
 @endpush

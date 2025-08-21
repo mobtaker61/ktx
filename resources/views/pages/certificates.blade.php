@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Certificates & Licenses - KTX')
+@section('title', 'Certificates & Licenses - KTX Nova Compressor Group | Quality Certifications')
+
+@section('meta_description', 'KTX Nova Compressor Group maintains the highest standards of quality, safety, and environmental responsibility. View our comprehensive range of international certifications.')
+@section('meta_keywords', 'KTX certificates, compressor company certifications, ISO certifications, quality management, industrial compressor standards, Dubai compressor company')
+
+@section('og_title', 'Certificates & Licenses - KTX Nova Compressor Group | Quality Certifications')
+@section('og_description', 'KTX Nova Compressor Group maintains the highest standards of quality, safety, and environmental responsibility. View our international certifications.')
+@section('og_image', asset('img/base/ktx_verified.png'))
+@section('og_type', 'website')
+
+@section('twitter_title', 'Certificates & Licenses - KTX Nova Compressor Group | Quality Certifications')
+@section('twitter_description', 'KTX Nova Compressor Group maintains the highest standards of quality, safety, and environmental responsibility.')
+@section('twitter_card', 'summary_large_image')
 
 @section('hero_title', 'Certificates & Licenses')
 
@@ -11,6 +23,9 @@
 @section('hero_image', asset('img/base/ktx_verified.png'))
 
 @section('content')
+    <!-- GTM Certificates Page Tracking -->
+    <x-gtm-tracking event="page_view" :data="['page_title' => 'Certificates & Licenses', 'page_type' => 'certifications', 'user_type' => 'visitor', 'certificates_count' => count($certificates)]" />
+
     <!-- Certificates Start -->
     <div class="container-fluid py-5">
         <div class="container py-5">
@@ -367,6 +382,16 @@
             const certificateCard = document.querySelector(`[onclick="openCertificateModal(${certificateId})"]`);
             const certificateImage = certificateCard.querySelector('img');
             const certificateTitle = certificateImage.alt;
+
+            // GTM Certificate Modal Open Tracking
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'certificate_modal_open', {
+                    'event_category': 'certificate_interaction',
+                    'event_label': certificateTitle,
+                    'certificate_id': certificateId,
+                    'certificate_title': certificateTitle
+                });
+            }
 
             // Create certificate data object
             const certificateData = {

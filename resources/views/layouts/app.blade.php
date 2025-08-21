@@ -8,6 +8,10 @@
 
     <title>@yield('title', 'KTX.Tech')</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.png') }}">
+
     <!-- AI Optimization Meta Tags -->
     <meta name="description" content="@yield('meta_description', 'KTX - Leading Industrial Compressor Solutions. Expert engineering, reliable products, and comprehensive support for your industrial needs.')">
     <meta name="keywords" content="@yield('meta_keywords', 'industrial compressor, air compressor, screw compressor, compressor parts, compressor service, KTX, industrial equipment')">
@@ -24,7 +28,7 @@
     <meta property="og:description" content="@yield('og_description', 'Leading provider of industrial compressors, parts, and services. Expert engineering and reliable solutions.')">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request()->url() }}">
-    <meta property="og:image" content="@yield('og_image', asset('img/base/ktx_logo.png'))">
+    <meta property="og:image" content="@yield('og_image', asset('img/ktx_logo_sq.jpg'))">
     <meta property="og:site_name" content="KTX Compressor">
     <meta property="og:locale" content="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -32,7 +36,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="@yield('twitter_title', 'KTX - Industrial Compressor Solutions')">
     <meta name="twitter:description" content="@yield('twitter_description', 'Leading provider of industrial compressors, parts, and services. Expert engineering and reliable solutions.')">
-    <meta name="twitter:image" content="@yield('twitter_image', asset('img/base/ktx_logo.png'))">
+    <meta name="twitter:image" content="@yield('twitter_image', asset('img/ktx_logo_sq.jpg'))">
 
     <!-- AI-Specific Meta Tags -->
     <meta name="ai-crawler-friendly" content="true">
