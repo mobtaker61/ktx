@@ -7,7 +7,6 @@
         name="{{ $name }}"
         class="form-control @error($name) is-invalid @enderror"
         rows="{{ $rows }}"
-        @if($required) required @endif
         placeholder="{{ $placeholder }}"
         style="display: none;"
     >{!! old($name, $value) !!}</textarea>
@@ -42,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     types: ['jpeg', 'png', 'gif', 'webp'],
                     url: '{{ route("admin.upload-image") }}',
                     headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                     }
                 },
                 toolbar: [
@@ -53,19 +52,34 @@ document.addEventListener('DOMContentLoaded', function() {
             licenseKey: '',
         })
         .then(editor => {
+            console.log('Simple CKEditor initialized for {{ $id }}');
+
             // Store editor instance globally for form submission
             window.editor_{{ $id }} = editor;
 
             // Update textarea value when form is submitted
             const form = editor.sourceElement.closest('form');
             if (form) {
-                form.addEventListener('submit', function() {
+                form.addEventListener('submit', function(e) {
+                    // Update the hidden textarea with editor content
                     editor.sourceElement.value = editor.getData();
+
+                    // Custom validation for required fields
+                    @if($required)
+                    if (!editor.getData().trim()) {
+                        e.preventDefault();
+                        alert('{{ $name }} is required. Please enter some content.');
+
+                        // Focus on the editor
+                        editor.focus();
+                        return false;
+                    }
+                    @endif
                 });
             }
         })
         .catch(error => {
-            console.error(error);
+            console.error('Simple CKEditor error:', error);
         });
 });
 </script>
