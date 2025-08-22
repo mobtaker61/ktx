@@ -3,22 +3,22 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Google Tag Manager Configuration
+    | Google Analytics 4 Configuration
     |--------------------------------------------------------------------------
     |
-    | This file contains the configuration for Google Tag Manager.
-    | You can change the GTM ID here and it will be updated across the site.
+    | This file contains the configuration for Google Analytics 4.
+    | You can change the GA4 ID here and it will be updated across the site.
     |
     */
 
-    'id' => env('GTM_ID', 'GTM-K2MXKC7T'),
+    'id' => env('GTM_ID', 'G-V1W96KPJ57'),
 
     /*
     |--------------------------------------------------------------------------
-    | Enable/Disable GTM
+    | Enable/Disable GA4
     |--------------------------------------------------------------------------
     |
-    | Set this to false to disable GTM completely.
+    | Set this to false to disable GA4 completely.
     |
     */
 
@@ -29,8 +29,8 @@ return [
     | Environment
     |--------------------------------------------------------------------------
     |
-    | Set the environment for GTM (development, staging, production).
-    | This can be used to conditionally enable/disable GTM.
+    | Set the environment for GA4 (development, staging, production).
+    | This can be used to conditionally enable/disable GA4.
     |
     */
 

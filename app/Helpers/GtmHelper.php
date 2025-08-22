@@ -37,7 +37,7 @@ class GtmHelper
     }
 
     /**
-     * Push event to dataLayer
+     * Push event to gtag
      */
     public static function pushEvent(string $event, array $data = []): string
     {
@@ -48,11 +48,11 @@ class GtmHelper
         $eventData = array_merge(['event' => $event], $data);
         $jsonData = json_encode($eventData);
 
-        return "<script>dataLayer.push({$jsonData});</script>";
+        return "<script>if (typeof gtag !== 'undefined') { gtag('event', '{$event}', {$jsonData}); }</script>";
     }
 
     /**
-     * Push page view to dataLayer
+     * Push page view to gtag
      */
     public static function pushPageView(?string $pageTitle = null, ?string $pageUrl = null): string
     {
@@ -66,7 +66,7 @@ class GtmHelper
     }
 
     /**
-     * Push custom event to dataLayer
+     * Push custom event to gtag
      */
     public static function pushCustomEvent(string $eventName, array $eventData = []): string
     {
