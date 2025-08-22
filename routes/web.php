@@ -76,6 +76,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::resource('certificates', App\Http\Controllers\Admin\CertificateController::class);
     Route::resource('news', App\Http\Controllers\Admin\NewsController::class);
 
+    // CKEditor Image Upload
+    Route::post('upload-image', [App\Http\Controllers\Admin\ImageUploadController::class, 'store'])->name('upload-image');
+
     // Career Opportunities additional routes
     Route::patch('/career-opportunities/{careerOpportunity}/toggle-status', [App\Http\Controllers\Admin\CareerOpportunityController::class, 'toggleStatus'])->name('career-opportunities.toggleStatus');
 

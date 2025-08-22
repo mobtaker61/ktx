@@ -18,18 +18,18 @@
         <div class="card-body">
             <form action="{{ route('admin.news.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                
+
                 <div class="row">
                     <div class="col-md-8">
                         <!-- Title -->
                         <div class="mb-3">
                             <label for="title" class="form-label">Title *</label>
-                            <input type="text" 
-                                   class="form-control @error('title') is-invalid @enderror" 
-                                   id="title" 
-                                   name="title" 
-                                   value="{{ old('title') }}" 
-                                   required 
+                            <input type="text"
+                                   class="form-control @error('title') is-invalid @enderror"
+                                   id="title"
+                                   name="title"
+                                   value="{{ old('title') }}"
+                                   required
                                    placeholder="Enter article title">
                             @error('title')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -37,43 +37,35 @@
                         </div>
 
                         <!-- Content -->
-                        <div class="mb-3">
-                            <label for="content" class="form-label">Content *</label>
-                            <textarea class="form-control @error('content') is-invalid @enderror" 
-                                      id="content" 
-                                      name="content" 
-                                      rows="12" 
-                                      required 
-                                      placeholder="Enter article content">{{ old('content') }}</textarea>
-                            @error('content')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                            <div class="form-text">You can use HTML tags for formatting.</div>
-                        </div>
+                                                <x-ckeditor
+                            id="content"
+                            name="content"
+                            value="{!! old('content') !!}"
+                            placeholder="Enter article content"
+                            :required="true"
+                            :error="$errors->first('content')"
+                        />
 
-                        <!-- Excerpt -->
-                        <div class="mb-3">
-                            <label for="excerpt" class="form-label">Excerpt</label>
-                            <textarea class="form-control @error('excerpt') is-invalid @enderror" 
-                                      id="excerpt" 
-                                      name="excerpt" 
-                                      rows="3" 
-                                      placeholder="Enter article excerpt (optional)">{{ old('excerpt') }}</textarea>
-                            @error('excerpt')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                            <div class="form-text">A brief summary of the article. If left empty, it will be auto-generated from content.</div>
-                        </div>
+                                                <!-- Excerpt -->
+                        <x-ckeditor-simple
+                            id="excerpt"
+                            name="excerpt"
+                            value="{!! old('excerpt') !!}"
+                            placeholder="Enter article excerpt (optional)"
+                            :required="false"
+                            :error="$errors->first('excerpt')"
+                        />
+                        <div class="form-text">A brief summary of the article. If left empty, it will be auto-generated from content.</div>
                     </div>
 
                     <div class="col-md-4">
                         <!-- Image -->
                         <div class="mb-3">
                             <label for="image" class="form-label">Featured Image</label>
-                            <input type="file" 
-                                   class="form-control @error('image') is-invalid @enderror" 
-                                   id="image" 
-                                   name="image" 
+                            <input type="file"
+                                   class="form-control @error('image') is-invalid @enderror"
+                                   id="image"
+                                   name="image"
                                    accept="image/*">
                             @error('image')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -84,11 +76,11 @@
                         <!-- Author -->
                         <div class="mb-3">
                             <label for="author" class="form-label">Author</label>
-                            <input type="text" 
-                                   class="form-control @error('author') is-invalid @enderror" 
-                                   id="author" 
-                                   name="author" 
-                                   value="{{ old('author') }}" 
+                            <input type="text"
+                                   class="form-control @error('author') is-invalid @enderror"
+                                   id="author"
+                                   name="author"
+                                   value="{{ old('author') }}"
                                    placeholder="Enter author name">
                             @error('author')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -98,9 +90,9 @@
                         <!-- Status -->
                         <div class="mb-3">
                             <label for="status" class="form-label">Status *</label>
-                            <select class="form-select @error('status') is-invalid @enderror" 
-                                    id="status" 
-                                    name="status" 
+                            <select class="form-select @error('status') is-invalid @enderror"
+                                    id="status"
+                                    name="status"
                                     required>
                                 <option value="">Select Status</option>
                                 <option value="draft" {{ old('status') === 'draft' ? 'selected' : '' }}>Draft</option>
@@ -114,10 +106,10 @@
                         <!-- Published At -->
                         <div class="mb-3">
                             <label for="published_at" class="form-label">Publish Date</label>
-                            <input type="datetime-local" 
-                                   class="form-control @error('published_at') is-invalid @enderror" 
-                                   id="published_at" 
-                                   name="published_at" 
+                            <input type="datetime-local"
+                                   class="form-control @error('published_at') is-invalid @enderror"
+                                   id="published_at"
+                                   name="published_at"
                                    value="{{ old('published_at') }}">
                             @error('published_at')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -154,7 +146,7 @@
 document.getElementById('image').addEventListener('change', function(e) {
     const file = e.target.files[0];
     const preview = document.getElementById('imagePreview');
-    
+
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -176,7 +168,7 @@ document.getElementById('image').addEventListener('change', function(e) {
 document.getElementById('content').addEventListener('input', function() {
     const content = this.value;
     const excerptField = document.getElementById('excerpt');
-    
+
     if (!excerptField.value && content.length > 50) {
         const excerpt = content.substring(0, 150).replace(/<[^>]*>/g, '');
         excerptField.value = excerpt + (excerpt.length === 150 ? '...' : '');

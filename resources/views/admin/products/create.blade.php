@@ -33,20 +33,26 @@
 
                     <div class="mb-3">
                         <label for="description" class="form-label">Description *</label>
-                        <textarea class="form-control @error('description') is-invalid @enderror"
-                                  id="description" name="description" rows="5" required>{{ old('description') }}</textarea>
-                        @error('description')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        <x-ckeditor
+                            id="description"
+                            name="description"
+                            value="{!! old('description') !!}"
+                            placeholder="Enter product description"
+                            :required="true"
+                            :error="$errors->first('description')"
+                        />
                     </div>
 
                     <div class="mb-3">
                         <label for="short_description" class="form-label">Short Description</label>
-                        <textarea class="form-control @error('short_description') is-invalid @enderror"
-                                  id="short_description" name="short_description" rows="3">{{ old('short_description') }}</textarea>
-                        @error('short_description')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        <x-ckeditor-simple
+                            id="short_description"
+                            name="short_description"
+                            value="{!! old('short_description') !!}"
+                            placeholder="Enter short product description"
+                            :required="false"
+                            :error="$errors->first('short_description')"
+                        />
                     </div>
 
                     <div class="mb-3">

@@ -124,15 +124,10 @@
                 <!-- Product Info -->
                 <div class="col-lg-8">
                     <div class="product-info">
-                        <div class="mb-4">
-                            <h5>Description</h5>
-                            <p>{{ $product->description }}</p>
-                        </div>
-
                         @if ($product->specifications)
                             <div class="mb-4">
                                 <h5>Specifications</h5>
-                                <div class="row">
+                                <div class="row bg-light p-3 rounded-3">
                                     @foreach ($product->specifications as $key => $value)
                                         <div class="col-md-6 mb-2">
                                             <strong>{{ $key }}:</strong> {{ $value }}
@@ -141,6 +136,12 @@
                                 </div>
                             </div>
                         @endif
+                        <div class="mb-4">
+                            <div class="product-description">
+                                {!! $product->description !!}
+                            </div>
+                        </div>
+
 
                         @if ($product->features)
                             <div class="mb-4">
@@ -260,6 +261,58 @@
         .carousel-indicators button.active {
             background-color: #007bff;
             border-color: #007bff;
+        }
+
+        /* Product Description Styles */
+        .product-description {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .product-description h1,
+        .product-description h2,
+        .product-description h3,
+        .product-description h4,
+        .product-description h5,
+        .product-description h6 {
+            color: #0ea2bd;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .product-description h3 {
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 0.5rem;
+        }
+
+        .product-description p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .product-description strong {
+            color: #495057;
+            font-weight: 600;
+        }
+
+        .product-description ul,
+        .product-description ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .product-description li {
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description ul li {
+            list-style-type: disc;
+        }
+
+        .product-description ol li {
+            list-style-type: decimal;
         }
 
         @media (max-width: 768px) {
