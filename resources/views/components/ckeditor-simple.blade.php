@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     'imageStyle:inline'
                 ]
             },
-            licenseKey: '',
+            licenseKey: 'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3ODc0NDMxOTksImp0aSI6ImQ2MTgyNWExLTE4YzYtNGZmYi04NzkzLTk1NDMyMDY0NGM0OSIsImxpY2Vuc2VkSG9zdHMiOlsia3R4LnRlc3QiLCJrdHhjb21wcmVzc29yLmNvbSJdLCJ1c2FnZUVuZHBvaW50IjoiaHR0cHM6Ly9wcm94eS1ldmVudC5ja2VkaXRvci5jb20iLCJkaXN0cmlidXRpb25DaGFubmVsIjpbImNsb3VkIiwiZHJ1cGFsIl0sImZlYXR1cmVzIjpbIkRSVVAiLCJFMlAiLCJFMlciXSwidmMiOiI0MmFmM2UwOSJ9.-scNFxdPlFMZacCb_PRAVfFWimR92HSydi72J0UN8AE7TYPJH1Q_XnC0aJoRftL51fMmRhzJjTsCGwAhJG7CGA',
         })
         .then(editor => {
             console.log('Simple CKEditor initialized for {{ $id }}');
